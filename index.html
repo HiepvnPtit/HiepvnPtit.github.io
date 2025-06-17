@@ -1,306 +1,221 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Slider Demo</title>
-<style>
-	body {
-		margin: 0;
-		
-		align-items: center;
-		justify-content: center;
-	}
-
-	.slider-container {
-		
-		width: 100%;
-		overflow: hidden;
-    height: auto;
-
-	}
-  .thanh_scroll_cham{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    height: auto;
-   justify-content: center;
-  }
-  .dau_cham{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin: 0.5% 0.2% 0.5% 0.2%;
-    background-color: rgb(161, 158, 158);
-  }
-  .dau_cham.active {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin: 0.5% 0.2% 0.5% 0.2%;
-    background-color: rgb(0, 0, 0);
-  }
-	.img_all {
-		display: flex;
-		overflow-x: auto;
-		scroll-behavior: smooth;
-		scrollbar-width: none;
-    width: 100%;
-	}
-
-	.img_0 {
-		width: 54%;
-		height: 65vh;
-		flex-shrink: 0;
-		object-fit: cover;
-		border-radius: 10px;
-		margin: 4% 23% 2% 23%;
-		box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.5);
-	}
-
-	.slider-btnleft {
-   margin: 2% 4% 2% 4%;
-     padding: 1% 2% 1% 2%;
-		
-	}
-
-	.slider-btnright {
-  margin: 2% 4% 2% 4%;
-  padding: 1% 2% 1% 2%;
-   
-	}
-  .button_center{
-
-    display: flex;
-    width: 100%;
-    align-items: center;
-    height: auto;
-   justify-content: center;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="web80012176.css">
 </head>
-<body>
-	<div class="slider-container">
-		
-		<div class="img_all" id="img_all_a"></div>
-  <div class="thanh_scroll_cham"></div></div>
-  <div class="button_center">
-		<button class="slider-btnleft" onclick="scrollSlider(-1)">Trước</button>
-		<button class="slider-btnright" onclick="scrollSlider(1)">Sau</button>
+<style>
+
+</style>
+<body><img id="backg_eror" class="h_background" src="backg/Distorted_Fate.webp">
+  <div>
+    
+  <div class="main-container">
+
+    <div class="container box">
+      <div id="left_div" >        
+              
+      </div>
+      <div id="right_div" >
+        
+        <div id="right_div_a" >
+            <div id="right_div_a-right_div_b">
+                <div id="right_div_a-right_div_b-right_div_0">
+                  <h1>Hatsune Miku</h1>
+                  <div id="info"></div>
+                  <input type="text" id="text" placeholder="Nhập tags (vd: hatsune_miku long_hair)" autocomplete="off">
+                  <ul id="suggestions"></ul>
+                  <!-- <input type="number" id="number" placeholder="Số lượng ảnh (<=50)" max="50" min="1"> -->
+                  <button onclick="tiepTheo()">Tiếp theo</button>
+                </div>
+                <div id="right_div_a-right_div_b-right_div_1">
+                </div>
+                <div id="right_div_a-right_div_b-right_div_2"></div>
+                <div id="right_div_a-right_div_b-right_div_c">
+                    
+                    
+                </div>
+                
+            </div>
+            <div id="right_div_a-right_div_3"></div>
+        </div>
+            
+      </div>
+    </div>
   </div>
-	</div>
+</div>
 </body>
 <script>
-	function Tao_khoi_tu_dong(n, arr) {
-		const new_arr = arr.slice(0, n+1).map((item) => {
-			return `<img src="Anh0012173/${item.name}" class="img_0" />`;
-		}).join('');
-		document.querySelector('.img_all').innerHTML = new_arr;
-    let new_arr_cham =''
-    for (let i=0;i<=n;i++){
-      if (i==0){new_arr_cham+=`<div class="dau_cham active" id="${i}" onclick="scroll_cham(${i})"></div>`
-        console.log(new_arr_cham)} else {
-        new_arr_cham+=`<div class="dau_cham " id="${i}" onclick="scroll_cham(${i})"></div>`
-        console.log(new_arr_cham)}
+  document.addEventListener('DOMContentLoaded', function () {
+    const scrollContainer = document.getElementById('right_div_a-right_div_b');
+    const bgImage = document.getElementById('backg_eror');
+    let ytang_0=0
+    let Right_div_b=document.getElementById("right_div_a-right_div_b")
+    let index = 0;
+    if (!scrollContainer || !bgImage) return;
+    let timeoutId = null;
+
+    scrollContainer.addEventListener('scroll', function () {
+      if (scrollContainer.scrollTop > 200 &&  220 > scrollContainer.scrollTop) {
+   
+        bgImage.setAttribute('src', 'backg/404-13.gif' );
+
+
+        if (timeoutId) clearTimeout(timeoutId);
+
+   
+        timeoutId = setTimeout(function () {
+          bgImage.setAttribute('src','backg/Distorted_Fate.webp');
+          }, 200);
+        }
+      });
+    });
+
+
+function search_tag(_ass) {
+  const input = document.getElementById("text");
+  const suggestionsBox = document.getElementById("suggestions");
+
+  input.addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+
+    let suggestions = [];
+    if (query !== "") {
+      suggestions = _ass
+        .filter(item => item.toLowerCase().includes(query))
+        .slice(0, 100); // Giới hạn 10 gợi ý
     }
-    document.querySelector('.thanh_scroll_cham').innerHTML = new_arr_cham
-	}
-  let thu_tu_anh=0
-  let so_luong_anh=19
-  let time
-  time_3s()
-	function time_3s(){
-    time = setTimeout(time_3s,5000)
-    scrollSlider(1)
-  }
-  function scroll_cham(thu_tu){
-    thu_tu_anh=thu_tu
-    scrollSlider(null)
-  }
-	function scrollSlider(direction) {
-		const all_a = document.getElementById('img_all_a')
-		// const cham = document.querySelector(`#${thu_tu_anh}`).classList.add('active')
-    
-		const maxScrollLeft = all_a.scrollWidth
-    const khoangcach = all_a.clientWidth
-    console.log(maxScrollLeft,khoangcach,all_a.scrollWidth , all_a.clientWidth)
-    const dotElements = document.querySelectorAll('.dau_cham');
 
-    
-    
-    
-		// maxScrollLeft là độ dài từ đầu đến cuối
-		// if (direction > 0) {
-		// 	if (thu_tu_anh >= so_luong_anh ) {
-		// 		all_a.scrollTo({ left: 0, behavior: 'smooth' });
-    //     thu_tu_anh=1
-		// 		return;
-		// 	}
-		// 	// Nếu sắp cuộn vượt khỏi điểm cuối của slider, quay lại đầu (left: 0), tạo hiệu ứng vòng lặp.
-		// } else {
-		// 	if (thu_tu_anh==0) {
-		// 		all_a.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
-    //     thu_tu_anh=so_luong_anh
-		// 		return;
-		// 	}
-			// quay lại cuối
-		// }
-    const khoangcach_2 = all_a.scrollLeft
-    console.log('sdsdsd',khoangcach_2,parseInt(khoangcach_2/khoangcach),thu_tu_anh)
-    if ((direction>0) && (thu_tu_anh < so_luong_anh) && (direction!=null)) {
-      thu_tu_anh+=1
+    const suggestionsHTML = suggestions.map(item => 
+      `<li onclick="selectSuggestion('${item}')">${item}</li>`
+    ).join("");
 
-    }else if((direction>0) &&(thu_tu_anh >= so_luong_anh)&& (direction!=null)){
-      all_a.scrollTo({
-         left: 0,
-          behavior: 'smooth' });
-        thu_tu_anh=0
-      } else if((thu_tu_anh==0)&& (direction!=null)){
-        all_a.scrollTo({
-           left: maxScrollLeft,
-            behavior: 'smooth' });
-        thu_tu_anh=so_luong_anh
-      } else if( (direction!=null)){
-      thu_tu_anh-=1
+    suggestionsBox.innerHTML = suggestionsHTML;
+  });
+}
+
+// Đặt bên ngoài để global
+function selectSuggestion(value) {
+  document.getElementById("text").value = value;
+  document.getElementById("suggestions").innerHTML = "";
+}
+
+
+    async function tiepTheo() {
+      const btn_0 = document.getElementById('text').value.trim();
+      const btn_1 = 50
+      // parseInt(document.getElementById('number').value);
+      // if (!btn_0 || !btn_1 || btn_1 > 500 || btn_1 < 1) {
+      //   alert("Vui lòng nhập đúng tag và số lượng (1–50)");
+      //   return;
+      // }
+
+
+      try {
+        const url = `https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(btn_0)}&limit=${btn_1}&pid=${0}`;
+        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`;
+        const response = await fetch(proxyUrl);
+
+        const text = await response.text();  // codetabs trả về dạng text gốc
+        const data = JSON.parse(text);       // sau đó ta mới parse
+
+        if (data.length === 0) {
+          alert("Hết ảnh hoặc không có ảnh phù hợp.");
+          return;
+        }
+
+        let img_html = '';
+        Tao_khoi_tu_dong(0, data,[])
+        // for (let img of data) {
+        //   img_html += `<img src="https://safebooru.org/images/${img.directory}/${img.image}" style="max-width:100%;margin:10px 0;">`;
+        //   console.log(img);
+        // }
+
+        
+        // index++;
+      } catch (e) {
+        console.error("Lỗi:", e);
+        alert("Đã xảy ra lỗi khi tải ảnh. Vui lòng thử lại.");
+      }
     }
     
-     
-      all_a.scrollTo({
-        left:thu_tu_anh*khoangcach,
-        behavior: 'smooth'
-      })
-    
-
-		// cuộn trang xang ảnh tiếp theo
-    // Xóa Thêm trạng thái active cũ
-    dotElements.forEach(dot => dot.classList.remove('active'));
-    if (dotElements[thu_tu_anh]) {
-        dotElements[thu_tu_anh].classList.add('active');
+    function Tao_khoi_tu_dong(n,arr,arr1) {
+        if (true){
+            const new_div=arr.slice(0,10).map((item) => {
+                return`<button class="left_div-button_0" onclick="tang_trang()">the loai</button>`
+            }).join('');
+            document.querySelector('#left_div').innerHTML = new_div
+        }
+         if (true){
+            const new_div=arr.slice(n,n+15).map((item) => {
+              var name_a=item.owner.substring(0,15 )
+              
+              console.log(name_a)
+                return`<button class="right_div_b-right_div_1-button_1">
+                  <div class='img_0_a'>
+                    <img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}">
+                  </div>
+                  <div class='img_0_b'>
+                   <img class='img_0_b_0' src="https://safebooru.org/images/${item.directory}/${item.image}">
+                    <div class='img_0_b_1'>${name_a}...</div>
+                  </div></button>`
+            }).join('');
+            document.querySelector('#right_div_a-right_div_b-right_div_1').innerHTML = new_div
+        }
+         if (true){
+            const new_div=arr.slice(n+15,n+30).map((item) => {
+                return`<button class="right_div_b-right_div_2-button_2"><img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}"></button>`
+            }).join('');
+            document.querySelector('#right_div_a-right_div_b-right_div_2').innerHTML = new_div
+        }
+         if (true){
+            const new_div=arr.slice(n+30,n+50).map((item) => {
+                return`<button class="right_div_a-right_div_3-button_3">   <img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}"></button>`
+            }).join('');
+            document.querySelector('#right_div_a-right_div_3').innerHTML = new_div
+        }
+        
+        
     }
-	}
-// cái này để lấy dữ liệu tên các bức ảnh từ file có sẵn rồi dùng nó như 1 danh sách chưas ojẹct
+    
+    tiepTheo()
+    
+    // function tang_trang(){
+    //   ytang_0+=1
+    //   console.log(ytang_0) 
+    //   Right_div_b.scrollTop=0
+      
+    //   return uploading(ytang_0*50)
+            
+            
+   
+
+    // }
+    // const arr=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    // const arr1=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    fetch('img_tags_beta.json')
+        .then(response => response.json())
+        .then(_ass => {
+          search_tag(_ass)
+        })
+            
+            
+            
+    //     })
+    // function uploading(n){
+    //   fetch('file_list.json')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         Tao_khoi_tu_dong(n, data,[])
+            
+            
+    //     })
+    // }
 
 
-const ary=[{
-    "name": "59462983_p0.jpg"
-  },
-  {
-    "name": "59864302_p0.jpg"
-  },
-  {
-    "name": "61293937_p0_master1200 (1).jpg"
-  },
-  {
-    "name": "61351818_p0_master1200.jpg"
-  },
-  {
-    "name": "62331703_p0_master1200.jpg"
-  },
-  {
-    "name": "65567135_p0.jpg"
-  },
-  {
-    "name": "65893742_p0.jpg"
-  },
-  {
-    "name": "66016200_p0_master1200.jpg"
-  },
-  {
-    "name": "66439076_p0.jpg"
-  },
-  {
-    "name": "66896665_p0_master1200.jpg"
-  },
-  {
-    "name": "67232472_p0_master1200.jpg"
-  },
-  {
-    "name": "67290609_p0.jpg"
-  },
-  {
-    "name": "67300548_p0.png"
-  },
-  {
-    "name": "67528609_p0.png"
-  },
-  {
-    "name": "68048656_p0.png"
-  },
-  {
-    "name": "68134550_p0_master1200.jpg"
-  },
-  {
-    "name": "68575098_p0.png"
-  },
-  {
-    "name": "68665862_p0.png"
-  },
-  {
-    "name": "68887633_p0.jpg"
-  },
-  {
-    "name": "69662733_p0.png"
-  },
-  {
-    "name": "72018697_p0_master1200.jpg"
-  },
-  {
-    "name": "73102344_p0_master1200.jpg"
-  },
-  {
-    "name": "73464412_p0.jpg"
-  },
-  {
-    "name": "73718366_p0.png"
-  },
-  {
-    "name": "75139152_p0.jpg"
-  },
-  {
-    "name": "76181107_p0.jpg"
-  },
-  {
-    "name": "76354067_p0_master1200.jpg"
-  },
-  {
-    "name": "76533140_p0_master1200.jpg"
-  },
-  {
-    "name": "76981857_p0_master1200.jpg"
-  },
-  {
-    "name": "77034087_p0.jpg"
-  },
-  {
-    "name": "77334915_p0_master1200.jpg"
-  },
-  {
-    "name": "77433030_p0.jpg"
-  },
-  {
-    "name": "78009155_p0.png"
-  },
-  {
-    "name": "78791762_p0.jpg"
-  },
-  {
-    "name": "79043702_p0.jpg"
-  },
-  {
-    "name": "80637319_p0.jpg"
-  },
-  {
-    "name": "80979277_p0_master1200.jpg"
-  },
-  {
-    "name": "81936401_p0.jpg"
-  },
-  {
-    "name": "82836190_p0.jpg"
-  }
-]	
-Tao_khoi_tu_dong(so_luong_anh, ary); 
-			// hàm tạo khối chứa ảnh tự động 
 
-		
+    
 </script>
-
 </html>
