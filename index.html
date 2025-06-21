@@ -13,6 +13,20 @@
   <div>
     
   <div class="main-container">
+    <nav class="fixed-nav">
+        <h1 style="margin: 0;font-size: 5vh;" onclick="Home_web()">WEB ANIME</h1> 
+            <div style="display: flex;">
+                    <ul id="input_tags" ></ul>
+                  </div>
+                  <div  >
+                    <input type="text" id="text" placeholder="Nhập tags (vd: hatsune_miku long_hair)" autocomplete="off">
+                    <ul id="suggestions"></ul>
+                  </div>
+                  <button  id="btn_search" class="btn_01">Tìm kiếm</button>
+                  <button onclick="tiepTheo(-1)" class="btn_01">trang trước</button>
+                  <button onclick="tiepTheo(1)" class="btn_01"> trang kế</button>
+
+    </nav>
 
     <div class="container box">
       <div id="left_div" >        
@@ -23,42 +37,63 @@
         <div id="right_div_a" >
             <div id="right_div_a-right_div_b">
                 <div id="right_div_a-right_div_b-right_div_0">
-                  <h1>Hatsune Miku</h1>
-                  <div id="info"></div>
-                  <input type="text" id="text" placeholder="Nhập tags (vd: hatsune_miku long_hair)" autocomplete="off">
-                  <ul id="suggestions"></ul>
+                  
+                  
+                 
                   <!-- <input type="number" id="number" placeholder="Số lượng ảnh (<=50)" max="50" min="1"> -->
-                  <button onclick="tiepTheo()">Tiếp theo</button>
+                 
                 </div>
-                <div id="right_div_a-right_div_b-right_div_1">
+                <div>
+                  <div id="right_div_a-right_div_b-right_div_1">
                 </div>
-                <div id="right_div_a-right_div_b-right_div_2"></div>
-                <div id="right_div_a-right_div_b-right_div_c">
-                    
-                    
-                </div>
+              </div>
+              <div id="right_div_a-right_div_b-right_div_2"></div>
+              <div id="right_div_a-right_div_b-right_div_c"></div>
                 
             </div>
-            <div id="right_div_a-right_div_3"></div>
-        </div>
-            
+            <div id="right_div_a-right_div_3">
+
+            </div>
+          </div>
+          
       </div>
+      
+    </div>
+    <div id="bottom_div">
+      <button onclick="tiepTheo(-1)" class="btn_00">trang trước</button>
+      <div id="info"></div>
+      <button onclick="tiepTheo(1)" class="btn_00">trang kế</button>
+    </div>
+    <div id="img_item_api_0">
+      <div id="img_item_api_0-item_img">
+        <div id="img_item_api_0-item_img-img">
+
+        </div>
+      <div id="img_item_api_0-item_img-all"><div  id="img_item_api_0-item_img-item">
+
+        
+      
+
+      </div><div  id="img_item_api_0-item_img-item__item"></div></div>
+    </div>
+    <div id="img_item_api_0-_item_img_api">
+
+    </div>
     </div>
   </div>
 </div>
 </body>
 <script>
+
   document.addEventListener('DOMContentLoaded', function () {
-    const scrollContainer = document.getElementById('right_div_a-right_div_b');
-    const bgImage = document.getElementById('backg_eror');
-    let ytang_0=0
-    let Right_div_b=document.getElementById("right_div_a-right_div_b")
-    let index = 0;
+    
+    
     if (!scrollContainer || !bgImage) return;
     let timeoutId = null;
+    
 
     scrollContainer.addEventListener('scroll', function () {
-      if (scrollContainer.scrollTop > 200 &&  220 > scrollContainer.scrollTop) {
+      if ((scrollContainer.scrollTop > 200 &&  220 > scrollContainer.scrollTop)) {
    
         bgImage.setAttribute('src', 'backg/404-13.gif' );
 
@@ -72,54 +107,150 @@
         }
       });
     });
+const scrollContainer = document.getElementById('right_div_a-right_div_b');
 
-
-function search_tag(_ass) {
-  const input = document.getElementById("text");
-  const suggestionsBox = document.getElementById("suggestions");
-
-  input.addEventListener("input", function () {
-    const query = this.value.toLowerCase();
-
-    let suggestions = [];
-    if (query !== "") {
-      suggestions = _ass
-        .filter(item => item.toLowerCase().includes(query))
-        .slice(0, 100); // Giới hạn 10 gợi ý
+const bgImage = document.getElementById('backg_eror');
+window.Data_Api = null;
+let Right_div_b=document.getElementById("right_div_a-right_div_b")
+let Input_tags = document.getElementById('input_tags')
+let input = document.getElementById("text");
+let suggestionsBox = document.getElementById("suggestions");
+let img_item_api_0_a = document.getElementById("img_item_api_0")
+let img_item_api_0_item_img = document.getElementById("img_item_api_0-item_img")
+let img_item_api_0_item_img_img = document.getElementById("img_item_api_0-item_img-img")
+let img_item_api_0_item_img_item = document.getElementById("img_item_api_0-item_img-item")
+let img_item_api_0_item_img_item_item = document.getElementById("img_item_api_0-item_img-item__item")
+let img_item_api_0__item_img_api = document.getElementById("img_item_api_0-_item_img_api")
+let index = 0;
+let y_trang_0=0
+const text_info= document.getElementById('info')
+text_info.innerHTML=`${y_trang_0+1}`
+  document.getElementById("btn_search").addEventListener("click", handleSearch);
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleSearch();
+      }
+    });
+function tiepTheo(x_trang){
+  const text_info= document.getElementById('info')
+  if(x_trang!=null){
+    y_trang_0+=x_trang
+    if (y_trang_0<0){
+      y_trang_0=0
     }
-
-    const suggestionsHTML = suggestions.map(item => 
-      `<li onclick="selectSuggestion('${item}')">${item}</li>`
-    ).join("");
-
-    suggestionsBox.innerHTML = suggestionsHTML;
-  });
+    
+  }else{
+    y_trang_0=0
+  }
+  
+  loading_trang(y_trang_0)
+  text_info.innerHTML=`${y_trang_0+1}`
 }
 
+
+let allTags = [];
+function handleSearch() {
+  // Lấy các tag đã chọn
+  const selectedTags = Array.from(Input_tags.querySelectorAll("li")).map(li => li.textContent.trim());
+
+  // Lấy nội dung đang gõ nếu có
+  const typed = input.value.trim();
+  if (typed && !selectedTags.includes(typed)) {
+    selectedTags.push(typed);
+  }
+
+  // Ghép tất cả thành chuỗi tag
+  const tagString = selectedTags.join(' ');
+
+  // Gán vào ô input để loading_trang đọc được
+  input.value = tagString;
+
+  // Reset input field sau khi search
+  input.focus();
+  suggestionsBox.innerHTML = '';
+
+  // Chạy tìm kiếm
+  tiepTheo(null);
+  Input_tags.innerHTML=''
+}
+
+
+function handleInput(e) {
+  const query = e.target.value.toLowerCase();
+
+  let suggestions = [];
+  if (query !== "") {
+    suggestions = allTags
+      .filter(item => item.toLowerCase().includes(query))
+      .slice(0, 100); // Giới hạn gợi ý
+  }
+
+  const suggestionsHTML = suggestions.map(item =>
+    `<li  class="input_tags_li" onclick="selectSuggestion('${item}')">${item}</li>`
+  ).join("");
+
+  suggestionsBox.innerHTML = suggestionsHTML;
+}
+function search_tag(_ass) {
+  allTags = _ass;
+
+  if (!input._listenerAdded) {
+    input.addEventListener("input", handleInput);
+    input._listenerAdded = true;
+  }
+}
+
+
+fetch('img_tags_beta.json')
+    .then(response => response.json())
+    .then(_ass => {
+      search_tag(_ass)
+    })
 // Đặt bên ngoài để global
 function selectSuggestion(value) {
-  document.getElementById("text").value = value;
-  document.getElementById("suggestions").innerHTML = "";
+  const tags = Array.from(Input_tags.querySelectorAll("li")).map(li => li.textContent);
+  if (!tags.includes(value)) {
+    const li = document.createElement("li");
+    li.className = "input_tags_li";
+    li.style.backgroundColor=`rgb(${randon_color()},${randon_color()},${randon_color()})`
+    li.style.color="white"
+    li.textContent = value;
+    li.addEventListener('click',function(){
+      Input_tags.removeChild(li)
+    })
+    Input_tags.appendChild(li);
+    
+  }
+
+  input.value = '';
+  suggestionsBox.innerHTML = '';
+  input.focus();
+  input.dispatchEvent(new Event('input'));
+}
+function Home_web(){
+  
+  img_item_api_0_a.style.width='1px'
+  input.value=''
+  loading_trang(0)
 }
 
 
-    async function tiepTheo() {
+
+    async function loading_trang(y_trang_1) {
       const btn_0 = document.getElementById('text').value.trim();
       const btn_1 = 50
-      // parseInt(document.getElementById('number').value);
-      // if (!btn_0 || !btn_1 || btn_1 > 500 || btn_1 < 1) {
-      //   alert("Vui lòng nhập đúng tag và số lượng (1–50)");
-      //   return;
-      // }
 
 
       try {
-        const url = `https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(btn_0)}&limit=${btn_1}&pid=${0}`;
+        const url = `https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(btn_0)}&limit=${btn_1}&pid=${y_trang_1}`;
         const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`;
         const response = await fetch(proxyUrl);
 
         const text = await response.text();  // codetabs trả về dạng text gốc
-        const data = JSON.parse(text);       // sau đó ta mới parse
+        let data = JSON.parse(text);  
+        window.Data_Api = data;
+             // sau đó ta mới parse
 
         if (data.length === 0) {
           alert("Hết ảnh hoặc không có ảnh phù hợp.");
@@ -128,13 +259,7 @@ function selectSuggestion(value) {
 
         let img_html = '';
         Tao_khoi_tu_dong(0, data,[])
-        // for (let img of data) {
-        //   img_html += `<img src="https://safebooru.org/images/${img.directory}/${img.image}" style="max-width:100%;margin:10px 0;">`;
-        //   console.log(img);
-        // }
-
-        
-        // index++;
+ 
       } catch (e) {
         console.error("Lỗi:", e);
         alert("Đã xảy ra lỗi khi tải ảnh. Vui lòng thử lại.");
@@ -142,77 +267,92 @@ function selectSuggestion(value) {
     }
     
     function Tao_khoi_tu_dong(n,arr,arr1) {
-        if (true){
-            const new_div=arr.slice(0,10).map((item) => {
-                return`<button class="left_div-button_0" onclick="tang_trang()">the loai</button>`
-            }).join('');
-            document.querySelector('#left_div').innerHTML = new_div
-        }
+        
          if (true){
-            const new_div=arr.slice(n,n+15).map((item) => {
-              var name_a=item.owner.substring(0,15 )
+            const new_div=arr.slice(n,n+20).map((item) => {
+              var name_a=item.tags.substring(0,20 )
               
-              console.log(name_a)
-                return`<button class="right_div_b-right_div_1-button_1">
+              
+                return`<button class="right_div_b-right_div_1-button_1" id="${item.id}" onclick="Tao_khoi_tu_dong_1(${item.id})">
                   <div class='img_0_a'>
-                    <img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}">
+                    <img class='img_0' src="${item.preview_url}">
                   </div>
                   <div class='img_0_b'>
-                   <img class='img_0_b_0' src="https://safebooru.org/images/${item.directory}/${item.image}">
+                   <img class='img_0_b_0' src="${item.preview_url}">
                     <div class='img_0_b_1'>${name_a}...</div>
                   </div></button>`
             }).join('');
             document.querySelector('#right_div_a-right_div_b-right_div_1').innerHTML = new_div
         }
          if (true){
-            const new_div=arr.slice(n+15,n+30).map((item) => {
-                return`<button class="right_div_b-right_div_2-button_2"><img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}"></button>`
+            const new_div=arr.slice(n+20,n+35).map((item) => {
+                return`<button class="right_div_b-right_div_2-button_2" id="${item.id}" onclick="Tao_khoi_tu_dong_1(${item.id})"><img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}"></button>`
             }).join('');
             document.querySelector('#right_div_a-right_div_b-right_div_2').innerHTML = new_div
         }
          if (true){
-            const new_div=arr.slice(n+30,n+50).map((item) => {
-                return`<button class="right_div_a-right_div_3-button_3">   <img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}"></button>`
+            const new_div=arr.slice(n+35,n+50).map((item) => {
+                return`<button class="right_div_a-right_div_3-button_3" id="${item.id}" onclick="Tao_khoi_tu_dong_1(${item.id})">   <img class='img_0' src="https://safebooru.org/images/${item.directory}/${item.image}"></button>`
             }).join('');
             document.querySelector('#right_div_a-right_div_3').innerHTML = new_div
+        }
+       
+        if(img_item_api_0_a.style.width=='100%'){
+          Tao_khoi_tu_dong_1(0)
+         
         }
         
         
     }
-    
-    tiepTheo()
-    
-    // function tang_trang(){
-    //   ytang_0+=1
-    //   console.log(ytang_0) 
-    //   Right_div_b.scrollTop=0
-      
-    //   return uploading(ytang_0*50)
-            
-            
-   
+    function tags_id_input(tags_id){
+      selectSuggestion(tags_id)
+      handleSearch()
+      img_item_api_0_a.style.width='1px'
+    }
+    function Tao_khoi_tu_dong_1(id_a){
 
-    // }
-    // const arr=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-    // const arr1=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-    fetch('img_tags_beta.json')
-        .then(response => response.json())
-        .then(_ass => {
-          search_tag(_ass)
-        })
-            
-            
-            
-    //     })
-    // function uploading(n){
-    //   fetch('file_list.json')
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         Tao_khoi_tu_dong(n, data,[])
-            
-            
-    //     })
-    // }
+      img_item_api_0_a.style.width='100%'
+      img_item_api_0_a.scrollTop=0
+      let img_item_api_0__item_img_api_item = ''
+      img_item_api_0_item_img_img.innerHTML=''
+      img_item_api_0_item_img_item.innerHTML =''
+      img_item_api_0_item_img_item_item.innerHTML=''
+      
+      
+      for(let id_img=0;id_img<Data_Api.length;id_img++){
+        if (Data_Api[id_img].id != id_a ) {
+          img_item_api_0__item_img_api_item += `<button class="right_div_b-right_div_1-button_1" id="${Data_Api[id_img].id}" onclick="Tao_khoi_tu_dong_1(${Data_Api[id_img].id})">
+                  <div class='img_0_a'>
+                    <img class='img_0' src="${Data_Api[id_img].preview_url}">
+                  </div>
+                  <div class='img_0_b'>
+                   <img class='img_0_b_0' src="${Data_Api[id_img].preview_url}">
+                    <div class='img_0_b_1'>${Data_Api[id_img].tags.substring(0,20 )}...</div>
+                  </div></button>`
+        } else {
+          let as=Data_Api[id_img].tags
+          let div_tags=''
+          as=as.split(" ")
+          for (let i_tags=0;i_tags<as.length;i_tags++){
+            div_tags+=`<button class="img_item_api_0-item_img-item_div" onclick="tags_id_input('${as[i_tags]}')" style="background-color:rgb(${randon_color()},${randon_color()},${randon_color()})">${as[i_tags]}</button>`
+          }
+          img_item_api_0_item_img_img.innerHTML = `<button class="img_item_api_0-item_img-img_a" id="${Data_Api[id_img].id}" style="margin: 0px"><img class='img_0' src="https://safebooru.org/images/${Data_Api[id_img].directory}/${Data_Api[id_img].image}"></button>` 
+          img_item_api_0_item_img_item.innerHTML =div_tags
+          img_item_api_0_item_img_item_item.innerHTML = `<p>owner : ${Data_Api[id_img].owner}</p><p> change : ${Data_Api[id_img].change}</p><p>id : ${Data_Api[id_img].id} - size : ${Data_Api[id_img].width} x ${Data_Api[id_img].height}</p><p>status : ${Data_Api[id_img].status}</p><p>rating : ${Data_Api[id_img].rating}</p><p>comment_count : ${Data_Api[id_img].comment_count}</p>`
+          
+        }
+      }
+      img_item_api_0__item_img_api.innerHTML=img_item_api_0__item_img_api_item
+    
+    }
+    loading_trang(0).then(() => {
+  
+});
+function randon_color(){
+  return Math.floor(Math.random() * (255 - 100)) + 100;
+}
+
+    
 
 
 
