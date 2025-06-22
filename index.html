@@ -128,6 +128,9 @@ let index = 0;
 let y_trang_0=0
 const text_info= document.getElementById('info')
 text_info.innerHTML=`${y_trang_0+1}`
+document.addEventListener("click",function () {
+  suggestionsBox.innerHTML=''
+} )
   document.getElementById("btn_search").addEventListener("click", handleSearch);
     window.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
