@@ -214,6 +214,58 @@ function Home_web(){
   Input_tags.innerHTML=''
   handleSearch()
 }
+function reset_xoa(){
+  local_admin[0].id_xoa=[]
+  local_admin[0].da_xoa=[]
+  local_admin[0].them=[]
+   localStorage.setItem('data_id_admin', JSON.stringify(local_admin));
+}
+function new_img(){
+  local_admin[0].them.push({
+    change: 0,
+    comment_count: 0,
+    directory: 0,
+    file_url: new_ing_src.value,
+    has_notes: false,
+    hash: "4ea5cad1294192ac6dfb54533308cd47",
+    height: 2000,
+    id: 1000+ local_admin[0].them.length,
+    image: new_ing_src.value,
+    owner: sh_new_img.value,
+    parent_id: 0,
+    preview_url: new_ing_src.value,
+    rating: "general",
+    sample: true,
+    sample_height: 850,
+    sample_url:new_ing_src.value,
+    sample_width: 850,
+    score: 1,
+    source: new_ing_src.value,
+    status: "active",
+    tags: tag_img_name.value,
+    tags_list: tag_img_name.value.split(" "),
+    width: 2000
+
+  })
+  localStorage.setItem('data_id_admin', JSON.stringify(local_admin));
+  alert("cap nhat thanh cong")
+}
+
+function xoa_id_img(){
+ 
+  for(let id_img_xoa=0;id_img_xoa<Data_Api.length;id_img_xoa++){
+    if (Data_Api[id_img_xoa].id == local_api[0].id_item_view && !local_admin[0].id_xoa.includes(Data_Api[id_img_xoa].id)){
+      local_admin[0].da_xoa.push(Data_Api[id_img_xoa])
+
+    }
+  }
+   if(!local_admin[0].id_xoa.includes(local_api[0].id_item_view)){
+  local_admin[0].id_xoa.push(local_api[0].id_item_view)
+  
+  }
+  localStorage.setItem('data_id_admin', JSON.stringify(local_admin));
+  Tao_khoi_tu_dong(0, window.Data_Api,[])
+}
 function Back_out_img(){
   
   
