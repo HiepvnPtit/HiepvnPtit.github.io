@@ -65,7 +65,8 @@
           height: 4vh;
           width: 24vh ;
           font-size: 1.4vh;
-          margin: 0px 10vh 0px 0vh;
+          margin: 0px 0vh 0px 0vh;
+          border: 0.1%;
         }
 
 
@@ -114,7 +115,12 @@
       overflow-y: auto;
       max-width: 20%;
       scrollbar-color: rgba(255, 255, 255, 0) rgba(0, 0, 0, 0);
+      height: 100vh;
+      display: flex;
+      padding: 20vh 0px 0px 0px;
+      flex-direction: column;
       
+  
     }
 
     #right_div {
@@ -123,6 +129,7 @@
       overflow: hidden;    
       scrollbar-color: rgba(158, 158, 158, 0.884) rgba(212, 211, 211, 0.699);
       overflow-x: hidden;
+      padding: 0px;
     }
     #bottom_div{
       bottom: 0px;
@@ -134,12 +141,20 @@
       justify-content: center;
       padding: 2vh;
       position: fixed;
+      border: 0px;
+      
     }
     .btn_00{
       margin: 0px 10vh 0px 10vh;
       font-size: 1.4vh;
+      color: rgb(0, 0, 0);
+      border: none;
     }
     .btn_01{
+      background-color: rgb(0, 102, 255);
+      border: none;
+      border-radius: 5vh;
+      color: white;
       height: 4vh;
       width: 10vh;
       margin: 0px 1vh 0px 1vh;
@@ -155,12 +170,13 @@
     #right_div_a{
        display: flex;
         height:100%; 
+        width: 100%;
         justify-content: center;
         position: relative;
         align-items: stretch;
     }
     #right_div_a-right_div_b{
-        width: 85%;
+        width: 100%;
         overflow-y: auto;
        background-color: rgba(255, 255, 255, 0);
            overflow-x: hidden;
@@ -187,6 +203,7 @@
 
       display:flex ;
       flex-wrap: wrap;
+      justify-content: center;
       
       }
      #input_tags {
@@ -255,8 +272,8 @@
     .right_div_a-right_div_3-button_3 {
       width: 34vh;
       max-width: 90%;
-      max-height: 90%;
-      height: 38vh;
+      max-height: 150px;
+      height: 34vh;
       margin: 10%;
       background-color:rgba(255, 255, 255, 0.682);    
       font-size: 16px;
@@ -269,6 +286,7 @@
         object-fit: cover;
         object-position: center;
         border-radius:2vh;
+        border: none;
     }
     .img_0_a {
         width: 100%;
@@ -358,7 +376,7 @@
       width: auto;
       height: auto;
       max-width: 70%;
-      max-height: 90vh;
+      max-height: 80vh;
       min-width: 50%;
       display: flex;
       justify-content: center;
@@ -471,9 +489,10 @@
     overflow: hidden;
   } */
  #left_div{
-    width: 100%;
+    width: 0%;
     padding: 0;
     overflow: hidden;
+    
   }
 
   #right_div_b {

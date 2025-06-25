@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="web80012176.css">
+</head>
+<body>
+    <div>
+    
+  <div class="main-container">
+    <nav class="fixed-nav">
+      
+       <h1 style="margin: 0;font-size: 5vh;color: rgb(0, 132, 255);">Welcome to Admin Page</h1>
+    <button id="logoutBtn"  class="btn_01" >Logout</button>
+            <div style="display: flex;">
+                    <ul id="input_tags" ></ul>
+                  </div>
+                  <div style="display: flex;">
+                  <div  style="justify-content: center;">
+                    <input type="text" id="text" placeholder="Nhập tags (vd: hatsune_miku long_hair)" autocomplete="off">
+                    <div>
+                    <ul id="suggestions"></ul></div>
+                  </div><button  id="btn_search" class="btn_01">Tìm kiếm</button></div>
+                  <div id="btn_00_a">
+                  
+                 
+                  </div>
+    </nav>
+
+    <div class="container box">
+      <div id="left_div" >    
+        <button onclick="xoa_id_img()" class="btn_01" style="background-color: rgb(255, 91, 15);width : 100%;">Xoá ảnh </button>
+        <button onclick="reset_xoa()" class="btn_01" style="background-color: rgb(83, 86, 248);width : 100%;">resset</button>
+        <button onclick="new_img()" class="btn_01" style="background-color: rgba(46, 255, 168, 0.658);width : 100%;">Thêm ảnh</button> 
+            <ul>
+              <li>
+                <input type="text" id="scr_img_new">
+              </li>
+              <li>
+                <input type="text" id="tag_img_new">
+              </li>
+              <li>
+                <input type="text" id="sh_img_new">
+              </li>
+   
+            </ul>
+           
+                
+      </div>
+      <div id="right_div" >
+           <div id="img_item_api_0">
+      <div id="img_item_api_0-item_img">
+        <div id="img_item_api_0-item_img-img">
+
+        </div>
+      <div id="img_item_api_0-item_img-all"><div  id="img_item_api_0-item_img-item">
+
+        
+      
+
+      </div><div  id="img_item_api_0-item_img-item__item"></div></div>
+    </div>
+    <div id="img_item_api_0-_item_img_api">
+
+    </div>
+    </div>
+        
+        <div id="right_div_a"  >
+            <div id="right_div_a-right_div_b">
+                <div id="right_div_a-right_div_b-right_div_0">
+                  
+                  
+                 
+                  <!-- <input type="number" id="number" placeholder="Số lượng ảnh (<=50)" max="50" min="1"> -->
+                 
+                </div>
+                
+                  <div id="right_div_a-right_div_b-right_div_1">
+                </div>
+             
+              <div id="right_div_a-right_div_b-right_div_2"></div>
+              <div id="right_div_a-right_div_b-right_div_c"></div>
+                
+            </div>
+            <div id="right_div_a-right_div_3">
+
+            </div>
+          </div>
+          
+      </div>
+      
+    </div>
+    <div id="bottom_div">
+      <button onclick="tiepTheo(-1)" class="btn_00">trang trước</button>
+      <div id="info"></div>
+      <button onclick="tiepTheo(1)" class="btn_00">trang kế</button>
+    </div>
+ 
+  </div>
+</div>
+    
+
+    
+</body>
+
+<script src="admin_a.js"></script>
+<script>
+  // Left_div_js.innerHTML=`
+  //   <button onclick="xoa_id_img()" class="btn_01" style="background-color: red;width : 100%;">Xoá ảnh </button>
+  //   <button onclick="reset_xoa()" class="btn_01" style="background-color: yellow;width : 100%;">resset</button>
+  //   <button onclick="" class="btn_01" style="background-color: yellow;width : 100%;"></button>
+  //   `
+
+</script>
+<script src="WEB0012173_b.js"></script>
+<script>
+    img_item_api_0_a.style.position="static"
+        Right_div_b.style.width='0px'
+        Right_div_3.style.width='0px'
+        // Kiểm tra nếu chưa đăng nhập thì chuyển hướng về login.html
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        // Xử lý sự kiện logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('isLoggedIn_id');
+            window.location.href = 'index.html';
+        });
+    </script>
+</html>

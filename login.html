@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+            background-image: url('slide11.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    #loginForm{
+        background: rgba(255, 255, 255, 0.95);
+            width: 320px;
+            margin: 100px auto;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+    }
+    h1 {
+            color: #377fd1; /* xanh lá đậm */
+            margin-bottom: 20px;
+			text-align: center;
+        }
+    label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+            text-align: left;
+        }
+    input{
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+    button{
+            width: 100%;
+            padding: 10px;
+            background-color: #4f7fe6; /* xanh lá nhạt */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        button:hover{
+            background-color: #2766ad;
+        }
+
+</style>
+<body>
+    
+    <form id="loginForm">
+        <h1>ADMIN</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required placeholder="Nhập tên tài khoản"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required placeholder="Nhập mật khẩu" ><br><br>
+        <button type="submit" onclick="LogigAD()">Login</button>
+    </form>
+
+    <script >
+        let local_ad=[]
+        // Kiểm tra nếu đã đăng nhập thì chuyển hướng sang admin.html
+          if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'admin.html';
+            }
+    fetch('Login_admin.json')
+      .then(response => response.json())
+      .then(data => {
+        login_ad = data;
+      });
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Ngăn form tự động tải lại trang
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+       
+
+        if (login_ad.length === 2 && username === login_ad[0] && password === login_ad[1]) {
+            localStorage.setItem('isLoggedIn', 'true');
+            window.location.href = 'admin.html';
+        } else {
+            alert('Sai tên đăng nhập hoặc mật khẩu!');
+        }
+        });
+    </script>
+</body>
+</html>
