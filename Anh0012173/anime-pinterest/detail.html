@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết hình ảnh - Pinterest Anime</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h1 id="detail_out">Pinterest Anime</h1>
+                </div>
+                <button class="back-btn" onclick="window.location.href='index.html?tags=&number=0'"><i
+                        class="fas fa-home"></i>
+                    Trang chủ</button>
+            </div>
+
+
+            <div class="header-tags">
+
+
+            </div>
+
+            <div class="search-section">
+                <input type="text" class="search-input" placeholder="Nhập tags (vd: hatsune_miku long_hair)">
+                <button class="search-btn">Tìm kiếm</button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="detail-main">
+        <div class="detail-container" id="detail-container">
+            <!-- Image Section -->
+            <div class="image-section">
+                <div class="main-image-container">
+                    <img id="mainImage" src="" alt="Anime Detail" class="main-image">
+                    <div class="image-actions">
+                        <button class="action-btn-round" title="Thích">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="action-btn-round" title="Chia sẻ">
+                            <i class="fas fa-share"></i>
+                        </button>
+                        <button class="action-btn-round" title="Tải xuống">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+
+
+                <!-- Tags Section -->
+                <div class="tags-section">
+                    <h3 class="section-title">Tags</h3>
+                    <div class="tags-container" id="tagsContainer">
+                        <!-- Tags will be loaded by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Metadata Section -->
+                <div class="metadata-section">
+                    <h3 class="section-title">Thông tin chi tiết</h3>
+                    <div class="metadata-grid">
+                        <div class="metadata-item">
+                            <span class="metadata-label">Owner:</span>
+                            <span class="metadata-value" id="imageOwner"></span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Change:</span>
+                            <span class="metadata-value" id="imageChange"></span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">ID:</span>
+                            <span class="metadata-value" id="imageId"></span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Size:</span>
+                            <span class="metadata-value" id="imageSize"></span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Status:</span>
+                            <span class="metadata-value status-active" id="imageStatus"></span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Rating:</span>
+                            <span class="metadata-value" id="imageRating"></span>
+                        </div>
+                        <div class="metadata-item">
+                            <span class="metadata-label">Comments:</span>
+                            <span class="metadata-value" id="imageComments">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions Section -->
+                <div class="actions-section">
+                    <button class="primary-btn">
+                        <i class="fas fa-heart"></i>
+                        Thêm vào yêu thích
+                    </button>
+                    <button class="secondary-btn">
+                        <i class="fas fa-share-alt"></i>
+                        Chia sẻ
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Images Section -->
+        <section class="related-section">
+            <h3 class="section-title">Hình ảnh liên quan</h3>
+            <div class="related-grid" id="relatedGrid">
+                <!-- Related images will be loaded by JavaScript -->
+            </div>
+        </section>
+    </main>
+    <header class="header change-loadier ">
+        <button class="change-btn" onclick="searchImgByNumberTrang(-1)">Trang trước</button>
+         <div id="nuber-trang"></div>
+        <button class="change-btn" onclick="searchImgByNumberTrang(1)">Trang sau</button>
+    </header>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+    </div>
+
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/detail.js"></script>
+</body>
+
+</html>

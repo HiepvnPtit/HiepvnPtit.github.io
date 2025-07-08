@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Anime - Tìm kiếm</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/search.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🎨</span>
+                <h1>Pinterest Anime</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Trang chủ</a>
+                <a href="search.html" class="nav-link active">Tìm kiếm</a>
+            </nav>
+            <div class="search-container">
+                <input type="text" placeholder="Nhập tags (vd: hatsune, miku long_hair)" class="search-input" id="searchInput">
+                <button class="search-btn" id="searchBtn">Tìm kiếm</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="search-filters">
+            <div class="filter-section">
+                <h4>Tags phổ biến:</h4>
+                <div class="tag-cloud">
+                    <span class="filter-tag" data-tag="red_eyes">red_eyes</span>
+                    <span class="filter-tag" data-tag="thighhighs">thighhighs</span>
+                    <span class="filter-tag" data-tag="dress">dress</span>
+                    <span class="filter-tag" data-tag="long_hair">long_hair</span>
+                    <span class="filter-tag" data-tag="standing">standing</span>
+                    <span class="filter-tag" data-tag="hair_ornament">hair_ornament</span>
+                    <span class="filter-tag" data-tag="closed_mouth">closed_mouth</span>
+                    <span class="filter-tag" data-tag="gloves">gloves</span>
+                    <span class="filter-tag" data-tag="holding">holding</span>
+                    <span class="filter-tag" data-tag="pink_hair">pink_hair</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-info">
+            <span id="resultsCount">Hiển thị tất cả hình ảnh</span>
+        </div>
+
+        <div class="masonry-grid" id="masonryGrid">
+            <!-- Images will be loaded by JavaScript -->
+        </div>
+    </main>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/search.js"></script>
+</body>
+</html>

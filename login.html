@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+    <style>
     body {
             background-image: url('slide11.jpg');
             background-size: cover;
@@ -57,18 +57,20 @@
         }
 
 </style>
-<body>
-    
-    <form id="loginForm">
-        <h1>ADMIN</h1>
-        <label for="username">Username:</label>
-        <input type="text" id="username" required placeholder="Nhập tên tài khoản"><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" required placeholder="Nhập mật khẩu" ><br><br>
-        <button type="submit" onclick="LogigAD()">Login</button>
-    </form>
+    <body>
 
-    <script >
+        <form id="loginForm">
+            <h1>ADMIN</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required
+                placeholder="Nhập tên tài khoản"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required
+                placeholder="Nhập mật khẩu"><br><br>
+            <button type="submit" onclick="LogigAD()">Login</button>
+        </form>
+
+        <script>
         let local_ad=[]
         // Kiểm tra nếu đã đăng nhập thì chuyển hướng sang admin.html
           if (localStorage.getItem('isLoggedIn') === 'true') {
@@ -94,5 +96,5 @@
         }
         });
     </script>
-</body>
+    </body>
 </html>

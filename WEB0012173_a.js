@@ -1,34 +1,34 @@
 
-    
-
-  document.addEventListener('DOMContentLoaded', function () {
-    
-    
-    if (!scrollContainer || !bgImage) return;
-    let timeoutId = null;
-    
-
-    scrollContainer.addEventListener('scroll', function () {
-      if ((scrollContainer.scrollTop > 200 &&  220 > scrollContainer.scrollTop)) {
-   
-        bgImage.setAttribute('src', 'backg/404-13.gif' );
 
 
-        if (timeoutId) clearTimeout(timeoutId);
+document.addEventListener('DOMContentLoaded', function () {
 
-   
-        timeoutId = setTimeout(function () {
-          bgImage.setAttribute('src','backg/Distorted_Fate.webp');
-          }, 200);
-        }
-      });
-    });
+
+  if (!scrollContainer || !bgImage) return;
+  let timeoutId = null;
+
+
+  scrollContainer.addEventListener('scroll', function () {
+    if ((scrollContainer.scrollTop > 200 && 220 > scrollContainer.scrollTop)) {
+
+      bgImage.setAttribute('src', 'backg/404-13.gif');
+
+
+      if (timeoutId) clearTimeout(timeoutId);
+
+
+      timeoutId = setTimeout(function () {
+        bgImage.setAttribute('src', 'backg/Distorted_Fate.webp');
+      }, 200);
+    }
+  });
+});
 const scrollContainer = document.getElementById('right_div_a-right_div_b');
 
 const bgImage = document.getElementById('backg_eror');
 window.Data_Api = null;
-let Right_div_b=document.getElementById("right_div_a-right_div_b")
-let Right_div_3=document.querySelector('#right_div_a-right_div_3')
+let Right_div_b = document.getElementById("right_div_a-right_div_b")
+let Right_div_3 = document.querySelector('#right_div_a-right_div_3')
 let Input_tags = document.getElementById('input_tags')
 let input = document.getElementById("text");
 let suggestionsBox = document.getElementById("suggestions");
@@ -43,83 +43,84 @@ let selectedTags = []
 let y_trang_0
 let input_vopy_calue = ''
 let allTags = [];
-if(true){
+if (true) {
   try {
-  const local_api=JSON.parse(localStorage.getItem('data_id_img_api'))
-  y_trang_0=local_api[0].Y_trang
-  console.log(local_api[0].Y_trang)
-  console.log(local_api[0].Y_trang)
-  if (local_api[0].tag_api_0!=[]){
-    for(let i_loading_tags = 0 ; i_loading_tags < local_api[0].tag_api_0.length;i_loading_tags++)
-      selectSuggestion(local_api[0].tag_api_0[i_loading_tags])
+    const local_api = JSON.parse(localStorage.getItem('data_id_img_api'))
+    y_trang_0 = local_api[0].Y_trang
+    console.log(local_api[0].Y_trang)
+    console.log(local_api[0].Y_trang)
+    if (local_api[0].tag_api_0 != []) {
+      for (let i_loading_tags = 0; i_loading_tags < local_api[0].tag_api_0.length; i_loading_tags++)
+        selectSuggestion(local_api[0].tag_api_0[i_loading_tags])
       handleSearch()
-   
-  }
+
+    }
   } catch (error) {
-    y_trang_0=0
-    localStorage.setItem('data_id_img_api', JSON.stringify([{ 
-          "id_item_view": 0 ,
-          "tag_api_0":[],
-          "Y_trang":y_trang_0,
-          "img_api_id_view":'100%'}]))
+    y_trang_0 = 0
+    localStorage.setItem('data_id_img_api', JSON.stringify([{
+      "id_item_view": 0,
+      "tag_api_0": [],
+      "Y_trang": y_trang_0,
+      "img_api_id_view": '100%'
+    }]))
   }
 }
-if(localStorage.getItem('data_id_admin')) {
-  const local_admin=JSON.parse(localStorage.getItem('data_id_admin'))
-}  else {
+if (localStorage.getItem('data_id_admin')) {
+  const local_admin = JSON.parse(localStorage.getItem('data_id_admin'))
+} else {
   localStorage.setItem('data_id_admin', JSON.stringify([{
-        "id_xoa":[],
-       "da_xoa": [],
-       "them" : []
-        }]))
+    "id_xoa": [],
+    "da_xoa": [],
+    "them": []
+  }]))
 }
-const text_info= document.getElementById('info')
-text_info.innerHTML=`${y_trang_0+1}`
-document.addEventListener("click",function () {
-  suggestionsBox.innerHTML=''
-} )
-  document.getElementById("btn_search").addEventListener("click", handleSearch);
-    window.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        handleSearch();
-      }
-    });
+const text_info = document.getElementById('info')
+text_info.innerHTML = `${y_trang_0 + 1}`
+document.addEventListener("click", function () {
+  suggestionsBox.innerHTML = ''
+})
+document.getElementById("btn_search").addEventListener("click", handleSearch);
+window.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    handleSearch();
+  }
+});
 let y_trang_0_copy = 0
 
-function tiepTheo(x_trang){
-  const text_info= document.getElementById('info')
-  
-  if(x_trang==null){
-    y_trang_0=0
+function tiepTheo(x_trang) {
+  const text_info = document.getElementById('info')
+
+  if (x_trang == null) {
+    y_trang_0 = 0
     loading_trang(y_trang_0)
 
-    text_info.innerHTML=`${y_trang_0+1}`
-  }else if(x_trang == 'ero' ){
-    y_trang_0-=1
-    input_vopy_calue=''
+    text_info.innerHTML = `${y_trang_0 + 1}`
+  } else if (x_trang == 'ero') {
+    y_trang_0 -= 1
+    input_vopy_calue = ''
     Home_web()
-    
-    
-  }else {
-    y_trang_0+=x_trang
-    if (y_trang_0<0){
-      y_trang_0=0
+
+
+  } else {
+    y_trang_0 += x_trang
+    if (y_trang_0 < 0) {
+      y_trang_0 = 0
     }
     loading_trang(y_trang_0)
 
-    text_info.innerHTML=`${y_trang_0+1}`
+    text_info.innerHTML = `${y_trang_0 + 1}`
 
   }
   console.log(x_trang)
-  
+
 }
 
 
 function handleSearch() {
   // Lấy các tag đã chọn
   selectedTags = Array.from(Input_tags.querySelectorAll("li")).map(li => li.textContent.trim());
-  input_vopy_calue=''
+  input_vopy_calue = ''
   // Lấy nội dung đang gõ nếu có
   const typed = input.value.trim();
   if (typed && !selectedTags.includes(typed)) {
@@ -139,7 +140,7 @@ function handleSearch() {
   // Chạy tìm kiếm
   tiepTheo(null);
   // Input_tags.innerHTML=''
-  input.value=''
+  input.value = ''
 }
 
 
@@ -170,24 +171,24 @@ function search_tag(_ass) {
 
 
 fetch('img_tags_beta.json')
-    .then(response => response.json())
-    .then(_ass => {
-      search_tag(_ass)
-    })
+  .then(response => response.json())
+  .then(_ass => {
+    search_tag(_ass)
+  })
 // Đặt bên ngoài để global
 function selectSuggestion(value) {
   const tags = Array.from(Input_tags.querySelectorAll("li")).map(li => li.textContent);
   if (!tags.includes(value)) {
     const li = document.createElement("li");
     li.className = "input_tags_li";
-    li.style.backgroundColor=`rgb(${randon_color()},${randon_color()},${randon_color()})`
-    li.style.color="white"
+    li.style.backgroundColor = `rgb(${randon_color()},${randon_color()},${randon_color()})`
+    li.style.color = "white"
     li.textContent = value;
-    li.addEventListener('click',function(){
+    li.addEventListener('click', function () {
       Input_tags.removeChild(li)
     })
     Input_tags.appendChild(li);
-    
+
   }
   console.log(tags)
 
@@ -196,83 +197,82 @@ function selectSuggestion(value) {
   input.focus();
   input.dispatchEvent(new Event('input'));
 }
-function Home_web(){
-  
-  img_item_api_0_a.style.width='1px'
-  input.value=''
-  y_trang_0=0
-  Input_tags.innerHTML=''
+function Home_web() {
+
+  img_item_api_0_a.style.width = '1px'
+  input.value = ''
+  y_trang_0 = 0
+  Input_tags.innerHTML = ''
   handleSearch()
 }
-function Back_out_img(){
-  
-  img_item_api_0_a.style.width='1px'
-  
+function Back_out_img() {
+
+  img_item_api_0_a.style.width = '1px'
+
   tiepTheo(0)
 }
 function isContiguousSublist(sub, full) {
-    const subStr = sub.join(',');
-    const fullStr = full.join(',');
-    return fullStr.includes(subStr);
+  const subStr = sub.join(',');
+  const fullStr = full.join(',');
+  return fullStr.includes(subStr);
 }
 
 
 
 
-    async function loading_trang(y_trang_1) {
-      
-      const btn_0 = input_vopy_calue.trim();
-      const btn_1 = 50
+async function loading_trang(y_trang_1) {
+
+  const btn_0 = input_vopy_calue.trim();
+  const btn_1 = 50
 
 
-      try {
-        const url = `https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(btn_0)}&limit=${btn_1}&pid=${y_trang_1}`;
-        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`;
-        const response = await fetch(proxyUrl);
-   
-        const text = await response.text();  // codetabs trả về dạng text gốc
-               try{
-        var api_data_new =[]
-          for(let new_img_them = 0;new_img_them<local_admin[0].them.length;new_img_them++){
-            
-            if(isContiguousSublist(selectedTags,local_admin[0].them[new_img_them].tags_list ) && y_trang_1==0){
-              api_data_new.push(local_admin[0].them[new_img_them])
+  try {
+    const url = `https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(btn_0)}&limit=${btn_1}&pid=${y_trang_1}`;
+    const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`;
+    const response = await fetch(proxyUrl);
 
-            }
-            
-          }
-          console.log(api_data_new,"new_api")
-        }catch (e) {}
-        let data = JSON.parse(text);  
-        window.Data_Api = api_data_new.concat(data);
-             // sau đó ta mới parse
+    const text = await response.text();  // codetabs trả về dạng text gốc
+    try {
+      var api_data_new = []
+      for (let new_img_them = 0; new_img_them < local_admin[0].them.length; new_img_them++) {
 
-        if ( window.Data_Api.length === 0) {
-          alert("Hết ảnh hoặc không có ảnh phù hợp.");
-          
-          return tiepTheo(-1);
+        if (isContiguousSublist(selectedTags, local_admin[0].them[new_img_them].tags_list) && y_trang_1 == 0) {
+          api_data_new.push(local_admin[0].them[new_img_them])
+
         }
 
-        let img_html = '';
-        Tao_khoi_tu_dong(0, window.Data_Api,[])
- 
-      } catch (e) {
-        console.error("Lỗi:", e);
-       
-        alert("Không tìm được ảnh đạt yêu cầu! Vui lòng tìm ảnh khác");
-        
-        return tiepTheo('ero');
-        
       }
-      
+      console.log(api_data_new, "new_api")
+    } catch (e) { }
+    let data = JSON.parse(text);
+    window.Data_Api = api_data_new.concat(data);
+    // sau đó ta mới parse
+
+    if (window.Data_Api.length === 0) {
+      alert("Hết ảnh hoặc không có ảnh phù hợp.");
+
+      return tiepTheo(-1);
     }
-    
-    
-    loading_trang(y_trang_0).then(() => {
-  
+
+    let img_html = '';
+    Tao_khoi_tu_dong(0, window.Data_Api, [])
+
+  } catch (e) {
+    console.error("Lỗi:", e);
+
+    alert("Không tìm được ảnh đạt yêu cầu! Vui lòng tìm ảnh khác");
+
+    return tiepTheo('ero');
+
+  }
+
+}
+
+
+loading_trang(y_trang_0).then(() => {
+
 });
-function randon_color(){
+function randon_color() {
   return Math.floor(Math.random() * (255 - 100)) + 100;
 }
 
-    
