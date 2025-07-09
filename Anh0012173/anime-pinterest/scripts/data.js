@@ -1,7 +1,10 @@
 let list_tags = [];
 const list_headerTags = document.querySelector(".header-tags")
 const nuber_trang = document.getElementById("nuber-trang")
+const suggestionsListTags = document.getElementById("suggestions_listTags")
+const searchInput = document.querySelector(".search-input")
 let listtags = []
+let allTags = []
 let numberTrang = 0
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -13,6 +16,10 @@ if (urlParams.get('number')) {
 }
 console.log(listtags.toString())
 
+window.addEventListener("click",()=>{
+  suggestionsListTags.innerHTML = '';
+})
+
 fetch('img_tags_beta.json')
   .then(response => response.json())
   .then(_ass => {
@@ -20,11 +27,29 @@ fetch('img_tags_beta.json')
   })
 
 
+function handleInput(e) {
+  const query = e.target.value.toLowerCase();
+
+  let suggestions = [];
+  if (query !== "") {
+    suggestions = allTags
+      .filter(item => item.toLowerCase().includes(query))
+      .slice(0, 100); // Giới hạn gợi ý
+  }
+
+  const suggestionsHTML = suggestions.map(item =>
+    `<li  class="input_tags_li" onclick="createListTags('${item}')">${item}</li>`
+  ).join("");
+
+  suggestionsListTags.innerHTML = suggestionsHTML;
+}
 function search_tag(_ass) {
-  console.log(_ass)
   allTags = _ass;
 
-
+  if (!searchInput._listenerAdded) {
+    searchInput.addEventListener("input", handleInput);
+    searchInput._listenerAdded = true;
+  }
 }
 
 async function searchImgByNumberTrang(changeTrang) {
@@ -57,6 +82,8 @@ function createListTags(_Tags) {
     })
     list_headerTags.appendChild(span)
     list_tags.push(_Tags)
+    searchInput.value = ''
+    // suggestionsListTags.innerHTML = '';
   }
 
 }

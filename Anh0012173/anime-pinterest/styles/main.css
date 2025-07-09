@@ -50,11 +50,27 @@ body {
   z-index: 1000;
   box-shadow: var(--shadow-light);
   transition: var(--transition);
+
 }
-.change-loadier{
+.header::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.header::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.header::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 3px;
+}
+
+.change-loadier {
   bottom: -60px;
   height: 60px;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,6 +139,7 @@ body {
   transform: translateY(-2px);
   box-shadow: var(--shadow-medium);
 }
+
 .change-btn {
   padding: 0.5rem 1rem;
   background: var(--accent-gradient);
@@ -133,24 +150,26 @@ body {
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow-light);
- 
-  
+
+
 }
 
 .change-btn:hover {
-  
+
   box-shadow: var(--shadow-medium);
 }
+
 .header-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
-  height: 80px;
+  
   max-height: 8vh;
   max-width: 100%;
   overflow-y: auto;
 }
+
 .header-tags::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -185,30 +204,39 @@ body {
 .tag-blue {
   background: linear-gradient(135deg, #3498db, #2980b9);
 }
+
 .tag-brown {
   background: linear-gradient(135deg, #8b4513, #a0522d);
 }
+
 .tag-green {
   background: linear-gradient(135deg, #27ae60, #2ecc71);
 }
+
 .tag-pink {
   background: linear-gradient(135deg, #e91e63, #f06292);
 }
+
 .tag-purple {
   background: linear-gradient(135deg, #9b59b6, #8e44ad);
 }
+
 .tag-orange {
   background: linear-gradient(135deg, #f39c12, #e67e22);
 }
+
 .tag-yellow {
   background: linear-gradient(135deg, #f1c40f, #f39c12);
 }
+
 .tag-cyan {
   background: linear-gradient(135deg, #1abc9c, #16a085);
 }
+
 .tag-red {
   background: linear-gradient(135deg, #e74c3c, #c0392b);
 }
+
 .tag-indigo {
   background: linear-gradient(135deg, #3f51b5, #303f9f);
 }
@@ -216,11 +244,12 @@ body {
 .search-section {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: nowrap;
   align-items: center;
 }
 
 .search-input {
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 2rem;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 25px;
   font-size: 0.9rem;
@@ -282,17 +311,88 @@ body {
   animation: spin 1s linear infinite;
 }
 
-#nuber-trang{
+.input_tags_li {
+
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  background: rgba(255, 255, 255, 0.8);
+
+  font-size: 0.9rem;
+
+  list-style: none;
+
+}
+.input_tags_li:hover {
+
+  color: var(--primary-color);
+
+}
+
+#nuber-trang {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 0px 5px 0px 5px;
 }
+
+#suggestions_listTagsAll {
+  position: absolute;
+  padding: 2.6rem 1rem 0rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  font-size: 0.9rem;
+  width: 300px;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+  max-height: 30vh;
+  display: flex;
+  align-items: start;
+
+}
+
+#suggestions_listTags {
+
+
+  width: 100%;
+  max-height: 20vh;
+  font-size: 0.9rem;
+
+  background: rgba(255, 0, 0, 0);
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+
+  overflow-y: auto;
+
+}
+
+#suggestions_listTagsAll:hover {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+#suggestions_listTags::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+#suggestions_listTags::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+#suggestions_listTags::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 3px;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -332,6 +432,9 @@ body {
     font-size: 0.7rem;
     padding: 0.3rem 0.6rem;
   }
+  #suggestions_listTagsAll{
+width: 250px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -341,5 +444,8 @@ body {
 
   .search-input {
     width: 200px;
+  }
+    #suggestions_listTagsAll{
+width: 200px;
   }
 }

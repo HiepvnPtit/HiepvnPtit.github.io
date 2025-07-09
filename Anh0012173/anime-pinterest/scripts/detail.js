@@ -24,7 +24,7 @@ function loadedTrangChiTiet(data) {
     back_btn.addEventListener('click', () => {
         Utils.gotoSearchImgByTags(urlParamsId[0].toString().replaceAll(",", "+"), 0)
     })
-    const searchInput = document.querySelector(".search-input")
+   
     const searchBtn = document.querySelector(".search-btn")
 
 

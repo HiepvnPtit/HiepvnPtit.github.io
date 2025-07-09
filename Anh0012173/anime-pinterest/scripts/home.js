@@ -10,7 +10,7 @@ function loadedTrangChu(animeData) {
   // Load gallery images
   const galleryGrid = document.getElementById("galleryGrid")
   if (galleryGrid) {
-    animeData.slice(0, 40).forEach((image, index) => {
+    animeData.slice(0, 50).forEach((image, index) => {
 
       setTimeout(() => {
         const card = Utils.createImageCard(image)
@@ -22,7 +22,7 @@ function loadedTrangChu(animeData) {
   // Load sidebar images
   const sidebarImages = document.getElementById("sidebarImages")
   if (sidebarImages) {
-    animeData.slice(40, 50).forEach((image, index) => {
+    animeData.slice(50, 50).forEach((image, index) => {
       setTimeout(() => {
         const item = Utils.createSidebarItem(image)
         sidebarImages.appendChild(item)
@@ -35,7 +35,7 @@ function loadedTrangChu(animeData) {
 
 
   // Search functionality
-  const searchInput = document.querySelector(".search-input")
+ 
   const searchBtn = document.querySelector(".search-btn")
 
 
@@ -53,7 +53,7 @@ function loadedTrangChu(animeData) {
       if (e.key === "Enter") {
 
         createListTags(searchInput.value)
-        searchInput.value = ''
+        
       }
     })
   }
