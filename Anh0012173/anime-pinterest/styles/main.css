@@ -244,8 +244,9 @@ body {
 .search-section {
   display: flex;
   gap: 0.5rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 .search-input {
