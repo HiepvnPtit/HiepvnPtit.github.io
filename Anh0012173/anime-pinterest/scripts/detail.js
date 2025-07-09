@@ -42,7 +42,7 @@ function loadedTrangChiTiet(data) {
             if (e.key === "Enter") {
 
                 createListTags(searchInput.value)
-                searchInput.value = ''
+                
             }
         })
     }

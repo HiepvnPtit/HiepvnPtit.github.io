@@ -16,7 +16,7 @@ if (urlParams.get('number')) {
 }
 console.log(listtags.toString())
 
-window.addEventListener("click",()=>{
+window.addEventListener("click", () => {
   suggestionsListTags.innerHTML = '';
 })
 
@@ -54,12 +54,12 @@ function search_tag(_ass) {
 
 async function searchImgByNumberTrang(changeTrang) {
   if ((numberTrang + changeTrang >= 0)) {
-    const result = await checkFetchApi(listtags.toString().replaceAll(",", " "), numberTrang+changeTrang);
-     // true hoặc false
+    const result = await checkFetchApi(listtags.toString().replaceAll(",", " "), numberTrang + changeTrang);
+    // true hoặc false
     if (result) {
       // Có data, xử lý tiếp
-      window.location.href = `index.html?tags=${listtags.toString().replaceAll(",", "+")}&number=${numberTrang+changeTrang}`
-    } 
+      window.location.href = `index.html?tags=${listtags.toString().replaceAll(",", "+")}&number=${numberTrang + changeTrang}`
+    }
   }
 }
 
@@ -88,23 +88,41 @@ function createListTags(_Tags) {
 
 }
 
-function createNumber(){
-  const span = document.createElement('span')
-  span.className = `header-tag tag-blue`
-  span.textContent = `${numberTrang+1}`
-  nuber_trang.appendChild(span)
+async function createNumber() {
+  for (let i = -2; i < 3; i++) {
+    if (((i<=0)&&(numberTrang + i + 1>0))||(await checkFetchApi(listtags.toString().replaceAll(",", " "), numberTrang + i))) {
+      const span = document.createElement('span')
+      if (i == 0) {
+        span.className = `header-tag tag-indigo`
+      } else {
+        span.className = `header-tag tag-blue`
+        span.onclick = ()=> searchImgByNumberTrang(i)
+      }
+      span.textContent = `${numberTrang + i + 1}`
+      nuber_trang.appendChild(span)
+    }
+  }
+
+
 }
 
 function checkFetchApi(listTags_sumit, numberTrang) {
-  return fetch('https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(`https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(listTags_sumit)}&limit=50&pid=${numberTrang}`))
-    .then(response => response.json())
-    .then(data => {
-      
-      // Kiểm tra data là mảng và rỗng
-      if (Array.isArray(data) && data.length === 0) {
+  return fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(`https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(listTags_sumit)}&limit=1&pid=${numberTrang*50}`))
+    .then(response => response.text())
+    .then(text => {
+      if (!text) {
         return false;
       }
-      return true;
+      try {
+        const data = JSON.parse(text);
+        if (Array.isArray(data) && data.length === 0) {
+          return false;
+        }
+        return true;
+      } catch (e) {
+        console.error('Không parse được JSON:', e);
+        return false;
+      }
     })
     .catch(error => {
       console.error(error);
@@ -118,6 +136,7 @@ async function fetchApi(listTags_sumit, numberTrang) {
   try {
     const url = `https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=${encodeURIComponent(listTags_sumit)}&limit=50&pid=${numberTrang}`;
     const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`;
+    console.log(url)
     const response = await fetch(proxyUrl);
     const text = await response.text();
     let data = JSON.parse(text);

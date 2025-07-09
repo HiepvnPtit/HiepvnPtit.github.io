@@ -371,9 +371,9 @@
     padding: 2rem;
   }
 
-  .info-section {
+  /* .info-section {
     order: -1;
-  }
+  } */
 
   .actions-section {
     flex-direction: column;
