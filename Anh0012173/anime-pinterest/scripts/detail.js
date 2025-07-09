@@ -24,7 +24,7 @@ function loadedTrangChiTiet(data) {
     back_btn.addEventListener('click', () => {
         Utils.gotoSearchImgByTags(urlParamsId[0].toString().replaceAll(",", "+"), 0)
     })
-   
+
     const searchBtn = document.querySelector(".search-btn")
 
 
@@ -42,7 +42,7 @@ function loadedTrangChiTiet(data) {
             if (e.key === "Enter") {
 
                 createListTags(searchInput.value)
-                
+
             }
         })
     }
@@ -52,7 +52,15 @@ function loadedTrangChiTiet(data) {
             detail_container.style.display = "grid"
             var image = data[id_img]
             // Get image ID from URL parameters
+            const taiXuongImg = document.getElementById("taiXuongImg")
+            taiXuongImg.addEventListener("click",() => {
+                
 
+
+                window.open(image.file_url, '_blank');
+                  
+              
+              });
             // Load image details
 
 
@@ -175,8 +183,8 @@ function loadedTrangChiTiet(data) {
 
             }
             setTimeout(() => {
-                if ((changeTrang_layer.style.bottom  == "0px") && (document.documentElement.scrollHeight >= (scrolled + 1200)) && (scroll_change == scrolled)) {
-                    changeTrang_layer.style.bottom  = "-60px"
+                if ((changeTrang_layer.style.bottom == "0px") && (document.documentElement.scrollHeight >= (scrolled + 1200)) && (scroll_change == scrolled)) {
+                    changeTrang_layer.style.bottom = "-60px"
                 }
             }, 3000)
             scroll_change = scrolled
