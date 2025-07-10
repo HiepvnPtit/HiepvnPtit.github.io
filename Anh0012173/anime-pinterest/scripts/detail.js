@@ -1,7 +1,9 @@
+Utils.showLoading();
+// hiển thị trang chi tiết 
 function loadedTrangChiTiet(data) {
 
-    Utils.showLoading();
 
+    // tại trang này hiển thị nhiều ảnh khác nhau và có lọc cả ảnh trong danh sách yêu thích lên phải lấy lại dữ liệu (cho chắc)
     const urlParams = new URLSearchParams(window.location.search);
     const imageId = Number.parseInt(urlParams.get('id')) || 1;
     const detail_container = document.getElementById
@@ -17,18 +19,21 @@ function loadedTrangChiTiet(data) {
     } else {
         const numberTrang = 0
     }
+    //tạo danh sách tags trên thành công cụ bên trên
     createTads(listtags)
+    //tạo thanh số trang bên dưới
     createNumber()
+    // nút trở về trang 1 đã lọc theo tìm kiếm
     const back_btn = document.getElementById("detail_out")
     const urlParamsId = Utils.urlParamsId()
     back_btn.addEventListener('click', () => {
-        Utils.gotoSearchImgByTags(urlParamsId[0].toString().replaceAll(",", "+"), 0)
+        Utils.gotoSearchImgByTags(urlParamsId[0].toString().replaceAll(",", "+"), numberTrang)
     })
-
+    //khai báo nút tìm kiếm
     const searchBtn = document.querySelector(".search-btn")
 
 
-
+    //thêm sự kiện tìm kiếm cho nút 
     if (searchBtn) {
         searchBtn.addEventListener("click", () => {
 
@@ -36,7 +41,7 @@ function loadedTrangChiTiet(data) {
 
         })
     }
-
+    // khi ấn enter chuyển dữ liệu của thành tìm kiếm để tạo tags tìm kiếm phục vụ việc lọc
     if (searchInput) {
         searchInput.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
@@ -46,32 +51,64 @@ function loadedTrangChiTiet(data) {
             }
         })
     }
-    for (let id_img = 0; id_img < data.length; id_img++) {
 
+    for (let id_img = 0; id_img < data.length; id_img++) {
+        //kiểm tra dữ liệu từ data nếu có ảnh phù hợp với ảnh đã chọn thì hiển thị nó dạng chi tiết 
         if (imageId == data[id_img].id) {
             detail_container.style.display = "grid"
             var image = data[id_img]
-            // Get image ID from URL parameters
+
+            //nút tải xuống ở trên khung ảnh chuyển xang 1 trang mới đễ xem ảnh dõ hơn hoặc tải về thủ công
             const taiXuongImg = document.getElementById("taiXuongImg")
-            taiXuongImg.addEventListener("click",() => {
-                
+            taiXuongImg.addEventListener("click", () => {
+
 
 
                 window.open(image.file_url, '_blank');
-                  
-              
-              });
-            // Load image details
 
 
-            // Update main image
+            });
+            //nút yêu thích
+            const ImgYeuThich = document.getElementById("Yeuthich")
+            if (IdDanhSanhYeuThich.includes(image.id)) {
+                ImgYeuThich.style.color = "#e91e63"
+            }
+            ImgYeuThich.addEventListener("click", () => {
+
+                //nếu ảnh thuộc loại yêu thích sẽ tự tô màu hồng để đánh dấu
+                if (IdDanhSanhYeuThich && !IdDanhSanhYeuThich.includes(image.id)) {
+                    //nếu anh chưa có trong danh sách yêu thích thì đưa dữ liệu của ảnh lên localStorage để lưu trữ ko bắt buộc đăng nhập đây là sở thích cả nhân
+                    DanhSanhYeuThich.push(image)
+                    IdDanhSanhYeuThich.push(image.id)
+                    console.log(DanhSanhYeuThich)
+                    localStorage.setItem('danhSanhYeuThich', JSON.stringify(DanhSanhYeuThich))
+                    localStorage.setItem('IDdanhSanhYeuThich', JSON.stringify(IdDanhSanhYeuThich))
+                    ImgYeuThich.style.color = "#e91e63"
+                } else {
+                    for (let i = 0; i < IdDanhSanhYeuThich.length; i++) {
+                        //nếu ảnh đã ở trong danh sách yêu thích thì chức năng của nút sẽ từ thêm thành xoá ảnh ra khôi mục yêu thích
+                        if (DanhSanhYeuThich[i].id == image.id) {
+                            console.log(DanhSanhYeuThich[i])
+                            IdDanhSanhYeuThich = IdDanhSanhYeuThich.filter(item => item !== image.id)
+                            DanhSanhYeuThich = DanhSanhYeuThich.filter(item => item.id !== image.id)
+                            localStorage.setItem('danhSanhYeuThich', JSON.stringify(DanhSanhYeuThich))
+                            localStorage.setItem('IDdanhSanhYeuThich', JSON.stringify(IdDanhSanhYeuThich))
+                            ImgYeuThich.style.color = "blue"
+
+                        }
+                    }
+                }
+
+            });
+            //tạo bảng hiển thị tất cả các tags của ảnh và thông tin chi tiết
+
             const mainImage = document.getElementById('mainImage');
             if (mainImage) {
                 mainImage.src = image.file_url
                 mainImage.alt = image.id
             }
 
-            // Update image info
+
             const imageTitle = document.getElementById('imageTitle');
             if (imageTitle) {
                 imageTitle.textContent = image.score
@@ -122,7 +159,7 @@ function loadedTrangChiTiet(data) {
                             tagSpan.onclick = () => {
 
                                 createListTags(tag)
-                                // Here you would implement tag search functionality
+
                             };
                             tagsContainer.appendChild(tagSpan);
                         }, index * 50);
@@ -131,7 +168,7 @@ function loadedTrangChiTiet(data) {
             }
         } else {
 
-
+            //tận dụng vòng lập tậo cách thẻ ảnh gán mác liên quan(chung tag sẽ liên quan tới nhau còn không thì sẽ thuộc danh sách ảnh mới được cập nhật)
             const item = document.createElement('div');
             item.className = 'related-item';
             item.onclick = () => {
@@ -172,7 +209,7 @@ function loadedTrangChiTiet(data) {
         let scroll_change = window.pageYOffset
 
         const changeTrang_layer = document.querySelector(".change-loadier")
-        // Add parallax effect to hero section
+        // sự kiển của thanh chuyển trang
 
         window.addEventListener("scroll", () => {
             const scrolled = window.pageYOffset
@@ -193,52 +230,6 @@ function loadedTrangChiTiet(data) {
 
 
         })
-
-        // Load related images
-
-        // if (relatedGrid) {
-        //     // Filter related images (exclude current image and get similar ones)
-        //     const relatedImages = animeData.images
-        //         .filter(img => img.id !== imageId)
-        //         .slice(0, 4);
-
-        //     relatedImages.forEach((relatedImage, index) => {
-        //         setTimeout(() => {
-        //             const item = document.createElement('div');
-        //             item.className = 'related-item';
-        //             item.onclick = () => {
-        //                 window.location.href = `detail.html?id=${relatedImage.id}`;
-        //             };
-
-        //             const img = document.createElement('img');
-        //             img.src = relatedImage.src;
-        //             img.alt = relatedImage.title;
-        //             img.className = 'related-image';
-        //             img.loading = 'lazy';
-
-        //             const info = document.createElement('div');
-        //             info.className = 'related-info';
-
-        //             const title = document.createElement('div');
-        //             title.className = 'related-title';
-        //             title.textContent = relatedImage.title;
-
-        //             const tags = document.createElement('div');
-        //             tags.className = 'related-tags';
-
-        //             relatedImage.tags.slice(0, 3).forEach(tag => {
-        //                 const tagSpan = document.createElement('span');
-        //                 tagSpan.className = `related-tag ${Utils.getTagColor(tag)}`;
-        //                 tagSpan.textContent = tag;
-        //                 tags.appendChild(tagSpan);
-        //             });
-
-        //             info.appendChild(title);
-        //             info.appendChild(tags);
-        //         })
-        //     })
-        // }
-
 
 
     }

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Header là thành công cụ trên -->
     <header class="header">
         <div class="header-container">
             <div class="logo-section">
@@ -21,10 +21,9 @@
                     <div class="logo-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h1 id="detail_out">Pinterest Anime</h1>
+                    <h1 onclick="window.location.href='index.html?tags=&number=0'">Pinterest Anime</h1>
                 </div>
-                <button class="back-btn" onclick="window.location.href='index.html?tags=&number=0'"><i
-                        class="fas fa-home"></i>
+                <button class="back-btn" id="detail_out"><i class="fas fa-home"></i>
                     Trang chủ</button>
             </div>
 
@@ -40,7 +39,7 @@
                         <ul id="suggestions_listTags"></ul>
                     </div>
                     <input type="text" class="search-input" placeholder="Nhập tags (vd: hatsune_miku long_hair)">
-                    
+
                 </div>
                 <button class="search-btn">Tìm kiếm</button>
             </div>
@@ -48,20 +47,18 @@
     </header>
 
 
-    <!-- Main Content -->
+    <!-- Main Content hiển thị nội dụng -->
     <main class="detail-main">
         <div class="detail-container" id="detail-container">
-            <!-- Image Section -->
+            <!-- Image Section ảnh cơ lớn của trang chi tiết-->
             <div class="image-section">
                 <div class="main-image-container">
                     <img id="mainImage" src="" alt="Anime Detail" class="main-image">
                     <div class="image-actions">
-                        <button class="action-btn-round" title="Thích">
+                        <button class="action-btn-round " id="Yeuthich" title="Thích">
                             <i class="fas fa-heart"></i>
                         </button>
-                        <button class="action-btn-round" title="Chia sẻ">
-                            <i class="fas fa-share"></i>
-                        </button>
+
                         <button class="action-btn-round" id="taiXuongImg" title="Mở trong thẻ mới">
                             <i class="fas fa-download"></i>
                         </button>
@@ -69,19 +66,19 @@
                 </div>
             </div>
 
-            <!-- Info Section -->
+            <!-- Info Section  thẻ thông tin ảnh-->
             <div class="info-section">
 
 
-                <!-- Tags Section -->
+                <!-- Tags Section khu để chứ danh sácg tags-->
                 <div class="tags-section">
                     <h3 class="section-title">Tags</h3>
                     <div class="tags-container" id="tagsContainer">
-                        <!-- Tags will be loaded by JavaScript -->
+
                     </div>
                 </div>
 
-                <!-- Metadata Section -->
+                <!-- Metadata Section thông tin chí tiết của ảnh-->
                 <div class="metadata-section">
                     <h3 class="section-title">Thông tin chi tiết</h3>
                     <div class="metadata-grid">
@@ -118,32 +115,26 @@
 
                 <!-- Actions Section -->
                 <div class="actions-section">
-                    <button class="primary-btn">
-                        <i class="fas fa-heart"></i>
-                        Thêm vào yêu thích
-                    </button>
-                    <button class="secondary-btn">
-                        <i class="fas fa-share-alt"></i>
-                        Chia sẻ
-                    </button>
+
+
                 </div>
             </div>
         </div>
 
-        <!-- Related Images Section -->
+        <!-- Related Images Section khu để chưa các thẻ hiển thi liên quan-->
         <section class="related-section">
             <h3 class="section-title">Hình ảnh liên quan</h3>
             <div class="related-grid" id="relatedGrid">
-                <!-- Related images will be loaded by JavaScript -->
+
             </div>
         </section>
     </main>
-    <header class="header change-loadier ">
+    <div class="header change-loadier ">
         <button class="change-btn" onclick="searchImgByNumberTrang(-1)">Trang trước</button>
-         <div id="nuber-trang"></div>
+        <div id="nuber-trang"></div>
         <button class="change-btn" onclick="searchImgByNumberTrang(1)">Trang sau</button>
-    </header>
-    <!-- Loading Overlay -->
+    </div>
+    <!-- nền chờ-->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
             <i class="fas fa-spinner fa-spin"></i>

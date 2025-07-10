@@ -7,11 +7,14 @@
     <title>Pinterest Anime - Khám phá thế giới anime tuyệt đẹp</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- thanh công cụ bên trên -->
     <header class="header">
         <div class="header-container">
             <div class="logo-section">
@@ -21,7 +24,8 @@
                     </div>
                     <h1 onclick="window.location.href='index.html?tags=&number=0'">Pinterest Anime</h1>
                 </div>
-
+                <button class="back-btn" id="detail_out"><i class="fas fa-home"></i>
+                    Trang đầu tiên</button>
             </div>
 
             <div class="header-tags">
@@ -35,17 +39,17 @@
                         <ul id="suggestions_listTags"></ul>
                     </div>
                     <input type="text" class="search-input" placeholder="Nhập tags (vd: hatsune_miku long_hair)">
-                    
+
                 </div> <button class="search-btn">Tìm kiếm</button>
             </div>
-           
+
         </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content nội dung của trang-->
     <main class="main-content">
-        <!-- Hero Section -->
+        <!-- Hero Section ảnh trang chí-->
         <section class="hero-section">
             <div class="hero-background">
                 <img src="3F3F_jacket.webp" alt="Distorted Fate" class="hero-image">
@@ -57,43 +61,37 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- khu để ảnh yêu thích -->
         <section class="gallery-section">
             <div class="gallery-container">
                 <div class="main-gallery">
+                    <div class="sidebar">
+                        <h3 class="sidebar-title " style="color: #e91e63"><i class="fas fa-heart"></i> Danh sách yêu
+                            thích
+                            <button class="back-btn" onclick="removeDanhSachYeuThich()">Xoá danh sách yêu thích</button>
+                        </h3>
+                        <div class="sidebar-images" id="sidebarImages">
+
+                        </div>
+                    </div>
                     <div class="gallery-grid" id="galleryGrid">
-                        <!-- Images will be loaded by JavaScript -->
+
                     </div>
                 </div>
 
-                <div class="sidebar">
-                    <h3 class="sidebar-title">Gợi ý cho bạn</h3>
-                    <div class="sidebar-images" id="sidebarImages">
-                        <!-- Sidebar images will be loaded by JavaScript -->
-                    </div>
-                </div>
+
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Pinterest Anime. Tất cả quyền được bảo lưu.</p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Về chúng tôi</a>
-                <a href="#" class="footer-link">Điều khoản</a>
-                <a href="#" class="footer-link">Bảo mật</a>
-            </div>
-        </div>
-    </footer>
 
-    <header class="header change-loadier ">
+    <!-- thanh chuyển trang -->
+    <div class="header change-loadier ">
         <button class="change-btn" onclick="searchImgByNumberTrang(-1)">Trang trước</button>
         <div id="nuber-trang"></div>
         <button class="change-btn" onclick="searchImgByNumberTrang(1)">Trang sau</button>
-    </header>
-    <!-- Loading Overlay -->
+    </div>
+    <!-- nền chờ -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
             <i class="fas fa-spinner fa-spin"></i>
