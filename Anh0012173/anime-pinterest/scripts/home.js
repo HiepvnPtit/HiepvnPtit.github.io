@@ -33,26 +33,40 @@ function loadedTrangChu(animeData) {
   const sidebar = document.querySelector(".sidebar")
   const sidebarImages = document.getElementById("sidebarImages")
   sidebar.addEventListener("click", () => {
-    if (sidebar.classList.contains("active")) {
-      sidebarImages.innerHTML = ''
-      sidebar.classList.remove("active")
-      
+    if (sidebarImages.classList.contains("active")) {
+
+      sidebarImages.classList.remove("active")
+      setTimeout(() => {
+        sidebarImages.innerHTML = ''
+      }, 500);
     } else {
-      
+
       if (sidebarImages) {
-        sidebar.classList.add("active")
+
+
         DanhSanhYeuThich.forEach((image, index) => {
           setTimeout(() => {
             const item = Utils.createSidebarItem(image)
             sidebarImages.appendChild(item)
-            
+
           }, index * 150)
         })
+        sidebarImages.classList.add("active")
       }
     }
   })
 
+  //ẩn thanh công cụ trên
+  const headercontainer = document.querySelector(".header-container")
+  const hiderThanhCongCu = document.getElementById("hiderThanhCongCu")
+  hiderThanhCongCu.addEventListener("click", () => {
+    if (headercontainer.classList.contains("collapsed")) {
+      headercontainer.classList.remove('collapsed');
+    } else {
+      headercontainer.classList.add('collapsed');
+    }
 
+  })
   //khai báo nút tìm kiếm
   const searchBtn = document.querySelector(".search-btn")
 

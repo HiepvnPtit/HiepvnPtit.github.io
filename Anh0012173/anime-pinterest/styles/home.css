@@ -233,14 +233,36 @@
 }
 
 .sidebar-images {
-  margin-top: 2rem;
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-
-  gap: 1.5rem;
+  max-height: 0vh;
+  overflow-y: auto;
   transition: var(--transition);
+  gap: 1.5rem;
+  margin-top: 0rem;
 }
 
+.sidebar-images.active {
+  max-height: 60vh;
+  margin-top: 2rem;
+
+}
+
+.sidebar-images::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.sidebar-images::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar-images::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 3px;
+}
 
 .sidebar-item {
   background: white;

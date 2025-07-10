@@ -42,6 +42,7 @@ body {
 
 /* Header Styles */
 .header {
+
   background: var(--bg-overlay);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -52,6 +53,7 @@ body {
   transition: var(--transition);
 
 }
+
 .header::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -85,6 +87,16 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  transition: var(--transition);
+  opacity: 1;
+  overflow: hidden;
+  max-height: 60vh;
+}
+
+.header-container.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
 }
 
 .logo-section {
@@ -99,6 +111,23 @@ body {
   gap: 0.75rem;
   text-decoration: none;
   color: var(--text-primary);
+}
+
+#hiderThanhCongCu {
+  background: var(--bg-overlay);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: -1;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  padding: 0.2rem 2rem;
+}
+
+#hiderThanhCongCu:hover {
+  background: var(--accent-gradient);
+  color: white;
 }
 
 .logo-icon {
@@ -323,6 +352,7 @@ body {
   list-style: none;
 
 }
+
 .input_tags_li:hover {
 
   color: var(--primary-color);

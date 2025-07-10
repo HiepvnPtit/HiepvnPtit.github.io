@@ -29,6 +29,17 @@ function loadedTrangChiTiet(data) {
     back_btn.addEventListener('click', () => {
         Utils.gotoSearchImgByTags(urlParamsId[0].toString().replaceAll(",", "+"), numberTrang)
     })
+    //ẩn thanh công cụ trên
+    const headercontainer = document.querySelector(".header-container")
+    const hiderThanhCongCu = document.getElementById("hiderThanhCongCu")
+    hiderThanhCongCu.addEventListener("click", () => {
+        if (headercontainer.classList.contains("collapsed")) {
+            headercontainer.classList.remove('collapsed');
+        } else {
+            headercontainer.classList.add('collapsed');
+        }
+
+    })
     //khai báo nút tìm kiếm
     const searchBtn = document.querySelector(".search-btn")
 
