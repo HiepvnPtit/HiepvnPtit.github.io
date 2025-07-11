@@ -25,7 +25,7 @@
   display: flex;
   max-width: 1150px;
   justify-content: center;
-  margin-top: 70px;
+  margin-top: 1rem;
   align-items: flex-start;
 }
 
@@ -425,5 +425,21 @@
 
   .image-title {
     font-size: 1.2rem;
+  }
+    /* .main-image {
+
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .main-image-container {
+
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  } */
+  .image-section {
+    width: 80%;
+  }
+  .info-section{
+    width: 80%;
   }
 }

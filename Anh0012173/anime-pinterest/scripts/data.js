@@ -35,12 +35,7 @@ window.addEventListener("click", () => {
   suggestionsListTags.innerHTML = '';
 })
 
-//truy cập file json chứa tất cả thẻ tags chuyển qua cho hàm search
-fetch('img_tags_beta.json')
-  .then(response => response.json())
-  .then(_ass => {
-    search_tag(_ass)
-  })
+
 // có nút xoá tất cả danh sách yêu thích 
 function removeDanhSachYeuThich() {
   DanhSanhYeuThich = []
@@ -50,6 +45,12 @@ function removeDanhSachYeuThich() {
   sidebarImages.innerHTML = ''
 
 }
+//truy cập file json chứa tất cả thẻ tags chuyển qua cho hàm search
+fetch('img_tags_beta.json')
+  .then(response => response.json())
+  .then(_ass => {
+    search_tag(_ass)
+  })
 //tiến hành lọc tìm kiếm tags phù hợp
 function handleInput(e) {
   // chuyển input thành chữ thường 
@@ -79,18 +80,7 @@ function search_tag(_ass) {
     searchInput._listenerAdded = true;
   }
 }
-// dùng để sửa đổi trang 
-async function searchImgByNumberTrang(changeTrang) {
-  if ((numberTrang + changeTrang >= 0)) {
-    //nếu trang tiếp theo cần đến lớn hơn 0 thì kiểm tra xem tra đó có tồn tại hay không nếu không thì không hoạt động nữa 
-    const result = await checkFetchApi(listtags.toString().replaceAll(",", " "), numberTrang + changeTrang);
-    // true hoặc false
-    if (result) {
-      // Có data, xử lý tiếp
-      window.location.href = `index.html?tags=${listtags.toString().replaceAll(",", "+")}&number=${numberTrang + changeTrang}`
-    }
-  }
-}
+
 //tạo ra danh sánh tags
 function createTads(listtags) {
   listtags.forEach(element => {
@@ -115,6 +105,18 @@ function createListTags(_Tags) {
 
   }
 
+}
+// dùng để sửa đổi trang 
+async function searchImgByNumberTrang(changeTrang) {
+  if ((numberTrang + changeTrang >= 0)) {
+    //nếu trang tiếp theo cần đến lớn hơn 0 thì kiểm tra xem tra đó có tồn tại hay không nếu không thì không hoạt động nữa 
+    const result = await checkFetchApi(listtags.toString().replaceAll(",", " "), numberTrang + changeTrang);
+    // true hoặc false
+    if (result) {
+      // Có data, xử lý tiếp
+      window.location.href = `index.html?tags=${listtags.toString().replaceAll(",", "+")}&number=${numberTrang + changeTrang}`
+    }
+  }
 }
 //kiểm tra sự tồn tại của các trang khác ngoài trang đang sử dụng
 async function createNumber() {
