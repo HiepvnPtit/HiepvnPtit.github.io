@@ -408,9 +408,17 @@
   .tags-container {
     max-height: 150px;
   }
+    /* .image-section {
+    max-width: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(20px, 2fr));
+  }
+  .info-section{
+    width: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(20px, 2fr));
+  } */
 }
 
-@media (max-width: 480px) {
+@media (max-width: 540px) {
   .detail-container {
     padding: 1rem;
   }
@@ -437,9 +445,11 @@
     gap: 1rem;
   } */
   .image-section {
-    width: 80%;
+    max-width: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
   }
   .info-section{
     width: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
   }
 }
