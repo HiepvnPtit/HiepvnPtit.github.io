@@ -2,6 +2,11 @@
 Utils.showLoading()
 //chạy trang chủ
 function loadedTrangChu(animeData) {
+  const checkImg = document.querySelector(".hero-subtitle")
+  if(animeData.length === 0) {
+    checkImg.innerHTML = "Không tìm thấy ảnh nào phù hợp với yêu cầu của bạn"
+  }
+  
 
 
   // lấy dữ liệu từ urlParams tạo cái thẻ tags tương ứng với trang đó

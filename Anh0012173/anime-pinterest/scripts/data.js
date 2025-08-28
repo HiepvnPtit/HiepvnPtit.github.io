@@ -165,7 +165,7 @@ function checkFetchApi(listTags_sumit, numberTrang) {
         }
         return true;
       } catch (e) {
-        console.error('Không parse được JSON:', e, 'Response:', text.substring(0, 100));
+        // console.error('Không parse được JSON:', e, 'Response:', text.substring(0, 100));
         return false;
       }
     })
@@ -209,7 +209,7 @@ async function fetchApi(listTags_sumit, numberTrang) {
     }
 
   } catch (e) {
-    console.error("Lỗi fetchApi:", e);
+    // console.error("Lỗi fetchApi:", e);
     try {
       loadedTrangChu([])
     }

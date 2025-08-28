@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+	<title>Slider Demo</title>
+<style>
+	body {
+		margin: 0;
+		
+		align-items: center;
+		justify-content: center;
+	}
+
+	.slider-container {
+		
+		width: 100%;
+		overflow: hidden;
+    height: auto;
+
+	}
+  .thanh_scroll_cham{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: auto;
+   justify-content: center;
+  }
+  .dau_cham{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0.5% 0.2% 0.5% 0.2%;
+    background-color: rgb(161, 158, 158);
+  }
+  .dau_cham.active {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0.5% 0.2% 0.5% 0.2%;
+    background-color: rgb(0, 0, 0);
+  }
+	.img_all {
+		display: flex;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		scrollbar-width: none;
+    width: 100%;
+	}
+
+	.img_0 {
+		width: 30%;
+		height: 40vh;
+		flex-shrink: 0;
+		object-fit: cover;
+		border-radius: 10px;
+		margin: 0% 35% 0% 35%;
+		box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.5);
+	}
+
+	.slider-btnleft {
+   margin: 0% 4% 0% 4%;
+     padding: 1% 2% 1% 2%;
+		
+	}
+
+	.slider-btnright {
+  margin: 0% 4% 0% 4%;
+  padding: 1% 2% 1% 2%;
+   
+	}
+  .button_center{
+
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: auto;
+   justify-content: center;
+  }
+  .top_div{
+    width: 100%;
+    text-align: center;
+    
+   
+    justify-content: center;
+    height: 60vh;
+    padding: 2% 0% 2% 0%;
+  }
+</style>
+</head>
+<body>
+  <div class="top_div">
+    <div class="img_0" style="background-color: rgb(250, 245, 215);text-align: left;padding: 1%;">
+      <h1>Name: Vương Ngọc H<i>i</i>ệp</h1>
+      <h1>Class: D24CQCC04-B</h1>
+      <h1>MSV: B24DCCC112</h1>
+      <h1>Sở thích: ăn và ngủ</h1>
+      <h1>Mục tiêu: "cuộc sống siêu cấp<br> nhàn hạ <b style="color: red;"> ( tất nhiên là để ngủ )"</b></h1>
+
+    </div>
+  </div>
+	<div class="slider-container">
+		
+		<div class="img_all" id="img_all_a"></div>
+  <div class="thanh_scroll_cham"></div></div>
+  <div class="button_center">
+		<button class="slider-btnleft" onclick="scrollSlider(-1)">Trước</button>
+		<button class="slider-btnright" onclick="scrollSlider(1)">Sau</button>
+  </div>
+	</div>
+</body>
+<script>
+	function Tao_khoi_tu_dong(n, arr) {
+		const new_arr = arr.slice(0, n+1).map((item) => {
+			return `<img src="Anh0012173/${item.name}" class="img_0" />`;
+		}).join('');
+		document.querySelector('.img_all').innerHTML = new_arr;
+    let new_arr_cham =''
+    for (let i=0;i<=n;i++){
+      if (i==0){new_arr_cham+=`<div class="dau_cham active" id="${i}" onclick="scroll_cham(${i})"></div>`
+        console.log(new_arr_cham)} else {
+        new_arr_cham+=`<div class="dau_cham " id="${i}" onclick="scroll_cham(${i})"></div>`
+        console.log(new_arr_cham)}
+    }
+    document.querySelector('.thanh_scroll_cham').innerHTML = new_arr_cham
+	}
+  let thu_tu_anh=0
+  let so_luong_anh=23
+  let time
+  // time_3s()
+	// function time_3s(){
+  //   time = setTimeout(time_3s,5000)
+  //   scrollSlider(1)
+  // }
+  function scroll_cham(thu_tu){
+    thu_tu_anh=thu_tu
+    scrollSlider(null)
+  }
+	function scrollSlider(direction) {
+		const all_a = document.getElementById('img_all_a')
+		// const cham = document.querySelector(`#${thu_tu_anh}`).classList.add('active')
+    
+		const maxScrollLeft = all_a.scrollWidth
+    const khoangcach = all_a.clientWidth
+    console.log(maxScrollLeft,khoangcach,all_a.scrollWidth , all_a.clientWidth)
+    const dotElements = document.querySelectorAll('.dau_cham');
+
+    
+    
+    
+		// maxScrollLeft là độ dài từ đầu đến cuối
+		// if (direction > 0) {
+		// 	if (thu_tu_anh >= so_luong_anh ) {
+		// 		all_a.scrollTo({ left: 0, behavior: 'smooth' });
+    //     thu_tu_anh=1
+		// 		return;
+		// 	}
+		// 	// Nếu sắp cuộn vượt khỏi điểm cuối của slider, quay lại đầu (left: 0), tạo hiệu ứng vòng lặp.
+		// } else {
+		// 	if (thu_tu_anh==0) {
+		// 		all_a.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+    //     thu_tu_anh=so_luong_anh
+		// 		return;
+		// 	}
+			// quay lại cuối
+		// }
+    const khoangcach_2 = all_a.scrollLeft
+    console.log('sdsdsd',khoangcach_2,parseInt(khoangcach_2/khoangcach),thu_tu_anh)
+    if ((direction>0) && (thu_tu_anh < so_luong_anh) && (direction!=null)) {
+      thu_tu_anh+=1
+
+    }else if((direction>0) &&(thu_tu_anh >= so_luong_anh)&& (direction!=null)){
+      all_a.scrollTo({
+         left: 0,
+          behavior: 'smooth' });
+        thu_tu_anh=0
+      } else if((thu_tu_anh==0)&& (direction!=null)){
+        all_a.scrollTo({
+           left: maxScrollLeft,
+            behavior: 'smooth' });
+        thu_tu_anh=so_luong_anh
+      } else if( (direction!=null)){
+      thu_tu_anh-=1
+    }
+    
+     
+      all_a.scrollTo({
+        left:thu_tu_anh*khoangcach,
+        behavior: 'smooth'
+      })
+    
+
+		// cuộn trang xang ảnh tiếp theo
+    // Xóa Thêm trạng thái active cũ
+    dotElements.forEach(dot => dot.classList.remove('active'));
+    if (dotElements[thu_tu_anh]) {
+        dotElements[thu_tu_anh].classList.add('active');
+    }
+	}
+// cái này để lấy dữ liệu tên các bức ảnh từ file có sẵn rồi dùng nó như 1 danh sách chưas ojẹct
+
+
+const ary=[
+  {
+    "name": "z6954943584924_09af45d94dda2f6672cd833e5b93b4f0.jpg"
+  },
+  {
+    "name": "z6954943585604_4bd0dec9d75a40adaf0f644d6b06cccd.jpg"
+  },
+  {
+    "name": "z6954943592702_37a4aff6f1e82df3c4ff744619e8c654.jpg"
+  },
+  {
+    "name": "z6954943628491_80abda1f62c59f9fb3f4c32ad69491b9.jpg"
+  },
+  {
+    "name": "z6954943635712_70f975b6bf8fec00aed404c8c8f1a3c8.jpg"
+  },
+  {
+    "name": "z6954943636037_4d13aca1c819691f6aca9388ea80e45d.jpg"
+  },
+  {
+    "name": "z6954943638099_ae4450432670a90e739ef1176c3da66b.jpg"
+  },
+  {
+    "name": "z6954943638436_bbbf0045d27ee236b63f1efd2715e5a4.jpg"
+  },
+  {
+    "name": "z6954943733484_b72fd2bb76d4ed552478d297e9213e81.jpg"
+  },
+  {
+    "name": "z6954943735731_44decffaff51cc803134ac7b11d0fa53.jpg"
+  },
+  {
+    "name": "z6954943742355_944bc82d88ebf3b7fc2a0b1c7b422a43.jpg"
+  },
+  {
+    "name": "z6954943742945_661434c9b50e462aa48c78d0cba51835.jpg"
+  },
+  {
+    "name": "z6954943748957_94607530470bd61bfbcd2e76e8f9a2e8.jpg"
+  },
+  {
+    "name": "z6954943751261_75d394d2fbe440e75c78369276ba529c.jpg"
+  },
+  {
+    "name": "z6954943752574_558b323bda0bea97883e6d4aa570189c.jpg"
+  },
+  {
+    "name": "z6954943757402_21da82b8c0325251f6e4563b2055919d.jpg"
+  },
+  {
+    "name": "z6954943760613_43ec17e616c4d58a73f3d298daf4a953.jpg"
+  },
+  {
+    "name": "z6954943763364_7eef0deab43a52b9dac3bdc29421967a.jpg"
+  },
+  {
+    "name": "z6954943763569_d456e54dca25a8c9ba9f3ad7531ae3dc.jpg"
+  },
+  {
+    "name": "z6954943766768_696eadd32bce669b534d536edab814a5.jpg"
+  },
+  {
+    "name": "z6954943774673_3d31a96a9f601d8b86ab1b72fe2b7e03.jpg"
+  },
+  {
+    "name": "z6954943777514_1299729bb5b864b567140fedecb30ee6.jpg"
+  },
+  {
+    "name": "z6954943782102_d2b7b1d3c2f1c4e7dff6e19ad0c97f86.jpg"
+  }
+]
+Tao_khoi_tu_dong(so_luong_anh, ary); 
+			// hàm tạo khối chứa ảnh tự động 
+
+		
+</script>
+
+</html>
