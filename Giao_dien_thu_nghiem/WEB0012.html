@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB123</title>
+    <style>
+        /* CSS */
+        body {
+            margin: 0px;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            padding: 0px;
+            
+            
+        }
+        html {
+        scroll-behavior: smooth;
+        }
+        
+        .fixed-nav {
+          position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: #4a91e200;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            
+        }
+        .fixed-nav.scrolled {
+            
+            background: #ffffffcf;
+            height: 70px;
+            color: black;
+            
+        }
+       
+        .nav-link {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            margin: 26px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-link.scrolled {
+            color: black;
+           
+        }
+        .nav-link:hover {
+            color: rgb(37, 153, 255);
+        }
+        
+        .nav-link.active {
+            color: rgb(37, 153, 255);
+        }
+        .img_0 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 10;
+            margin: 0px;
+            padding: 0px;
+            z-index: 1;
+            top: 0px;
+        
+        }
+        .img_1 {
+    
+             
+            margin: 0px;
+            padding: 0px;
+            z-index: 2;
+            transition: all 0.3s ease;
+            opacity: 1;
+        }
+        .img_1.scrolled {
+    
+            object-fit: cover;       
+            margin: 0px;
+            padding: 0px;
+            
+            opacity: 1;
+            
+        }
+
+        .img-wrapper {
+            position: relative;
+          
+        }   
+        .img-wrapper img {
+            position: absolute;
+    
+            }
+        
+        section {
+            height: 100vh;
+            
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .boder_0{
+            border-radius: 80px  ;
+             display: flex; align-items: center; justify-content: center;
+        }
+      
+        .p_0{
+            font-size: 4.5vw;font-weight: bold;
+        }
+        .p_1{
+            font-size: 2.1vw;
+        }
+        .p_2{
+            color: rgb(26, 136, 232);font-weight: bold;
+        }
+        .div_0{
+           align-items: center;text-align: center;align-items: center;
+          
+        }
+
+        #home_0 { background: #ffffff;width: 100%; }
+        #home_1 { background: #ffffff;width: 100%; }
+        #home_2 { background: #ffffff;width: 100%; }
+        #home_3 { background: #ffffff;width: 100%; }
+        #home_4 { background: #ffffff;width: 100%; }
+        #home_5 { background: #f5f4f6;width: 100%; }
+        @media (max-width: 768px) {
+            .nav-right_0{
+                width: 0px;
+                color: #00000000;
+            }
+            .nav-link.scrolled {
+            color: rgba(0, 0, 0, 0);
+            }
+            #nav_0_1{
+                display: block;
+
+            }
+            .p_1{
+            font-size: 3.1vw;
+        }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+<nav class="fixed-nav">
+  <div class="nav-left">
+    <a href="#home_0" class="nav-link">
+      <div style="width: 100%; height: 100%;">
+        <div class="boder_0" style="background-color: rgb(4,145,252); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; color: #ffffff;">
+          <h1 style="font-size: 300%;">7</h1>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="nav-right">
+    <a href="#home_1" class="nav-link nav-right_0">Demo Sites</a>
+    <a href="#home_2" class="nav-link nav-right_0">The7 & Elementor</a>
+    <a href="#home_3" class="nav-link nav-right_0">Block Editor</a>
+    <a href="#home_4" class="nav-link nav-right_0">WPBakery</a>
+    <a href="#home_5" class="nav-link nav-right_0">And More!</a>
+    <a class="nav-link">
+      <button class="boder_0" style="background-color: rgb(4,145,252); width: 140px; height: 40px; display: flex; align-items: center; justify-content: center; color: white;border-color: #f8f3f300;" onclick="chay_nhanh()">
+        Buy now $39
+      </button>
+    </a>
+  </div>
+</nav>
+
+
+    <!-- Các phần nội dung -->
+    <section id="home_0" class="img-wrapper" >
+        <img src="81936401_p0.png" class="img_0" >
+        <div style="width: 10px;"><img src="https://the7.io/wp-content/uploads/2025/03/el-ai-03-1024x768.webp" alt="" class="img_1" style="width: 20%;bottom: 0;left: 4%;"></div>
+        <div style="width: 10px;"><img src="https://the7.io/wp-content/uploads/2025/03/el-2025-03-300x225.webp" alt="" class="img_1" style="width: 30%;bottom: 0;left: 14%;"></div>
+        <div style="width: 10px;"><img src="https://the7.io/wp-content/uploads/2025/03/el-cr-dark-03-670x503.webp" alt="" class="img_1" style="width: 26%;bottom: 0;left:60%;"></div>
+        <div style="width: 10px;"><img src="https://the7.io/wp-content/uploads/2025/01/fse-business-new-768x576.webp" alt="" class="img_1" style="width: 22%;bottom: 0;left: 42%;"></div>
+        
+        <div style="width: 10px;"><img src="https://the7.io/wp-content/uploads/2025/01/fse-l-coach-768x576.webp" alt="" class="img_1" style="width: 20%;bottom: 0;left: 78%;"></div>
+        
+    </section>
+    <section id="home_1" style="height: auto;width: 100%;"><div>
+        <div class="div_0" style="padding: 10%;max-width: 2000px;align-items: center;justify-self: center;">
+            <p class="p_0">One Theme,<span class="p_2"> Unlimited</span>  Possibilities</p>
+            <p class="p_1">The7 is the ultimate WordPress theme, offering unparalleled versatility, flexibility, and value. Compatible with Elementor, WordPress Block Editor, WPBakery Page Builder, and WooCommerce, The7 empowers you to build <span class="p_2">any website imaginable</span> – from professional corporate sites and online stores to creative portfolios and simple blogs – <span class="p_2">no coding skills required!</span></p>
+        </div>
+        
+        <div style="display: flex;text-align: center ;justify-content: center;justify-self: center;margin-top: 10vh;max-width: 1600px;">
+            <div class="div_0" style=" margin: 0px 20px 0px 20px; ">
+                <div ><svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="#3498db" viewBox="0 0 256 256"><path d="M104,104V208H40a8,8,0,0,1-8-8V104Z" opacity="0.2"></path><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V96H40V56ZM40,112H96v88H40Zm176,88H112V112H216v88Z"></path></svg>  </div>
+                <p class="p_1">Full</p>
+                <p class="p_1">Website Builder</p>
+            </div>
+            <div class="div_0"  style=" margin: 0px 20px 0px 20px; ">
+                <div ><svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="#3498db" viewBox="0 0 256 256"><path d="M224,56V168a8,8,0,0,1-8,8H192V88a8,8,0,0,0-8-8H64V56a8,8,0,0,1,8-8H216A8,8,0,0,1,224,56Z" opacity="0.2"></path><path d="M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,88H184v16H40ZM184,200H40V120H184v80Zm32-32H200V88a16,16,0,0,0-16-16H72V56H216Z"></path></svg></div>
+                <p class="p_1">60+</p>
+                <p class="p_1">Prebuilt Websites</p>
+            </div>
+            <div class="div_0"  style=" margin: 0px 20px 0px 20px; "> 
+                <div ><svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="#3498db" viewBox="0 0 256 256"><path d="M225.94,161.94a48,48,0,0,1-67.88,0L128,128l30.06-33.94a48,48,0,0,1,67.88,67.88ZM30.06,94.06a48,48,0,0,0,67.88,67.88L128,128,97.94,94.06A48,48,0,0,0,30.06,94.06Z" opacity="0.2"></path><path d="M248,128a56,56,0,0,1-95.6,39.6l-.33-.35L92.12,99.55a40,40,0,1,0,0,56.9l8.52-9.62a8,8,0,1,1,12,10.61l-8.69,9.81-.33.35a56,56,0,1,1,0-79.2l.33.35,59.95,67.7a40,40,0,1,0,0-56.9l-8.52,9.62a8,8,0,1,1-12-10.61l8.69-9.81.33-.35A56,56,0,0,1,248,128Z"></path></svg></div>
+                <p class="p_1"> Lifetime</p>
+                <p class="p_1">Updates & Support</p>
+            </div>
+            <div class="div_0"  style=" margin: 0px 20px 0px 20px; ">
+                <div ><svg xmlns="http://www.w3.org/2000/svg" width="40%" height="40%" fill="#3498db" viewBox="0 0 256 256"><path d="M168,144a40,40,0,1,1-40-40A40,40,0,0,1,168,144ZM64,56A32,32,0,1,0,96,88,32,32,0,0,0,64,56Zm128,0a32,32,0,1,0,32,32A32,32,0,0,0,192,56Z" opacity="0.2"></path><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1,0-16,24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.85,8,57,57,0,0,0-98.15,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"></path></svg></div>
+                <p class="p_1">316K+</p>
+                <p class="p_1">Satisfied Customers</p>
+            </div>
+            
+        </div><div style="width: 100%;background-color: #f8f3f3;justify-self: center;align-items: center;justify-items: center;"><div class="div_0" style="background-color: #f8f3f3;margin: 10% 0px 0px 0px;padding:10% 10% 20% 10%;max-width: 2000px;" >
+                <p class="p_0">Choose the <span class="p_2"> Site Builder</span> That Best Suits Your Needs</p>
+                <p class="p_1">Enjoy working with your preferred site builder significantly<span class="p_2">  enhanced and extended by The7</span>. And our diverse selection of pre-built websites will help you kick-start your project quickly and effortlessly.</p>
+            
+
+            <div class="nav-right" style="align-items: start;" id="nav_0_1">
+                <div class="div_0" style="background-image: linear-gradient(rgba(231, 187, 246, 0.726),rgba(251, 189, 252, 0),rgba(251, 189, 252, 0));width: 100%;height: 100%;align-items: center;justify-items: center;margin:20% 1% 20% 1%;top: 0px;" >
+                    <div><img src="https://the7.io/wp-content/uploads/2024/11/be-logo.svg" style="width: 30%;margin-top: 6%;" > </div>
+                    <div><img src="https://the7.io/wp-content/uploads/2024/12/Frame-block-editor-77.png" alt="" style="width: 60%;"></div>
+                    <div style="padding: 10%;">
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Zero Learning Curve</p>
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Lightning-Fast Performance</p>
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Ideal for Simple Websites</p></div>
+                    <div class="boder_0 p_1" style="background-color: rgb(222, 73, 170);color: #ffffff;width: auto;padding:1vw;height: auto;font-weight:bold;font-size: 1.5dvh;">Explore Block Editor Demos</div>
+                </div>
+                <div class="div_0" style="background-image: linear-gradient(rgba(187, 202, 246, 0.726),rgba(189, 195, 252, 0),rgba(251, 189, 252, 0));width: 100%;height: 100%;align-items: center;justify-items: center;margin:20% 1% 20% 1%;top: 0px;" >
+                    <div><img src="https://the7.io/wp-content/uploads/2024/11/wp-bakery-logo.svg" style="width: 30%;margin-top: 6%;" > </div>
+                    <div><img src="https://the7.io/wp-content/uploads/2024/12/Frame-clip-wpb-88.png" alt="" style="width: 60%;"></div>
+                    <div style="padding: 10%;">
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> All Features You’ll Ever Need</p>
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Powers Millions of Websites</p>
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Full Creative Freedom</p></div>
+                    <div class="boder_0 p_1" style="background-color: rgb(73, 73, 222);color: #ffffff;width: auto;padding:1vw;height: auto;font-weight:bold;font-size: 1.5dvh;">Discover Elementor Demos</div>
+                </div>
+                    <div class="div_0" style="background-image: linear-gradient(rgba(231, 187, 246, 0.726),rgba(251, 189, 252, 0),rgba(251, 189, 252, 0));width: 100%;height: 100%;align-items: center;justify-items: center;margin:20% 1% 20% 1%;top: 0px;" >
+                    <div><img src="https://the7.io/wp-content/uploads/2024/12/elementorlogocolor-1.svg" style="width: 30%;margin-top: 6%;" > </div>
+                    <div><img src="https://the7.io/wp-content/uploads/2024/12/Frame-clip-el-000.png" alt="" style="width: 60%;"></div>
+                    <div style="padding: 10%;">
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Visual Page Builder</p>
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> 2000+ Theme Options</p>
+                    <p class="p_1" style="text-align: left;font-size: 1.5dvh;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Classic Way to Build Websites</p></div>
+                    <div class="boder_0 p_1" style="background-color: rgb(222, 73, 170);color: #ffffff;width: auto;padding:1vw;height: auto;font-weight:bold;font-size: 1.5dvh;">Browse WPBakery Demos</div>
+                </div>
+
+
+            </div>
+    </div></div>
+        <div class="div_0" style="background-color: black;">
+            <div style="color:rgb(255, 255, 255);background-color: rgba(0, 13, 24, 1);font-weight: bold;padding: 10%;margin: 0px;">
+                <p class="p_0 p_2" style="font-size: 10vw;"> 60+</p>
+                <p>Handcrafted Demo Websites</p>
+                <p class="p_1" style="color: rgb(173, 172, 172);">Jumpstart your project with over 60 professionally designed pre-built websites.
+                <span style="color: #ffffff;">Import any demo with a single click.</span> <span class="p_2">Mix, match, and customize</span>  to create the perfect foundation for your website in minutes!
+                </p>
+            </div>
+            <div>
+                <button onclick="chay_nhanh()" >qwer</button>
+            </div>
+            <div></div>
+        </div>
+    </div></section>
+    <section id="home_2" style="align-items: start;height: auto;">
+        <div  style="width: 100%;top: 0px;align-items: center;height: auto;justify-items: center;">
+            <div style="width: 100%;top: 0px;align-items: start;height: auto;">
+                 <div class="div_0" style="background-image: linear-gradient(rgba(231, 187, 246, 0.726),rgba(251, 189, 252, 0),rgba(251, 189, 252, 0));width: 100%;height: 100%;align-items: center;justify-items: center;top: 0px;" >
+                    <div><img src="https://the7.io/wp-content/uploads/2024/12/elementorlogocolor-1.svg" style="width: 30vh;margin-top: 6%;" > </div>
+                    <div style="padding: 10%;align-items: center;justify-items: center;">
+                    <p class="p_0" style="text-align: center;">Most Customizable Theme
+                    World's Leading Page Builder</p>
+                    <p class="p_1" style="text-align: center;">The7 not only seamlessly works with Elementor but significantly extends its capabilities, giving you <span class="p_2" style="color: rgb(222, 73, 170);"> unparalleled control over your website design</span> . With exclusive widgets, templates, and design options, The7 elevates your Elementor experience to new heights.</p>
+                  
+                    <div class="boder_0 p_1" style="background-color: rgb(222, 73, 170);color: #ffffff;padding:1vw;height: auto;font-weight:bold;font-size: 2dvh;width: 40%;">
+                         The7 + Elementor Main Demo</div>
+                </div>
+            </div>
+        </div><div style="max-width: 1600px;"><div class="nav-right" style="align-items: start;padding: 2%;" id="nav_0_1">
+            <div style="width: 60%;">
+                <p class="p_0">Full Website Builder</p>
+                <p class="p_1">Design your entire website with ease. The7 extends Elementor, giving you complete control over your site’s:</p>
+                <ul>
+                    
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Headers & Footers</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Mega Menus</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Slideshows, Hero Sections</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Post Loops & Templates</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Single Pages & Posts</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Individual Page Templates</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Archives & Search Results</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> All WooCommerce Pages</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ...</span> 404 Error Page</p>
+
+                </ul>
+            </div>
+            <div style="width: 100%;"><img src="https://the7.io/wp-content/uploads/2024/12/Frame-clip-el-000.png" alt="" style="width: 100%;"></div>
+        </div>
+        <div class="nav-right" style="align-items: start;padding: 2%;" id="nav_0_1"><div style="width: 100%;"><img src="https://the7.io/wp-content/uploads/2024/12/FEATURES-55.jpg" alt="" style="width: 100%;"></div>
+            <div style="width: 100%;">
+                <p class="p_0">The7's Exclusive Features</p>
+                <p class="p_1">With The7, you gain access to exclusive features and quality of life improvements that are not available in standard Elementor, including:</p>
+                <ul>
+                    
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Sticky Headers that change size and color on scroll</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Slideshows Builder, directly in the Elementor interface</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Bulk editing of website fonts</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Simple custom post type builder</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Hover builder for images</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Over 70 Exclusive The7 Widgets</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ...</span> And many other powerful tools!</p>
+
+                </ul>
+            </div>
+            
+        </div>
+        <div class="nav-right" style="align-items: start;padding: 2%;" id="nav_0_1">
+            <div style="width: 100%;">
+                <p class="p_0">Complete WooCommerce Builder</p>
+                <p class="p_1">The7 picks up where Elementor left off. With over 40 bespoke widgets, you can create and fully customize:</p>
+                <ul>
+                    
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Storefronts</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Product Pages</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Product Lists</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Product Scrollers</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Advanced Filters</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Shopping Carts</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ✔</span> Videos in Product</p>
+                    <p class="p_1" style="font-weight: bold;"><span class="p_2" style="color: rgb(222, 73, 170);"> ...</span> And much more!</p>
+
+
+                </ul>
+            </div>
+            <div style="width: 100%;"><img src="https://the7.io/wp-content/uploads/2024/12/WOO-55.jpg" alt="" style="width: 100%;"></div>
+        </div></div>
+        </div>
+    </section>
+    <section id="home_3" style="align-items: start;height: auto;">
+        <div  style="width: 100%;top: 0px;align-items: center;height: auto;justify-items: center;">
+            <div style="width: 100%;top: 0px;align-items: start;height: auto;">
+                   <div class="div_0" style="background-image: linear-gradient(rgba(187, 202, 246, 0.726),rgba(189, 195, 252, 0),rgba(251, 189, 252, 0));width: 100%;height: 100%;align-items: center;justify-items: center;top: 0px;" >
+                    <div><img src="https://the7.io/wp-content/uploads/2024/11/be-logo.svg" style="width: 30vh;margin-top: 6%;" > </div>
+                     <div style="padding: 10%;align-items: center;justify-items: center;">
+                    <p class="p_0" style="text-align: center;">Native WordPress Full Site Editing with The7</p>
+                    <p class="p_1" style="text-align: center;">As of version 12, The7 supports WordPress’s native Full Site Editing (FSE). Edit your entire website – including headers, footers, archives, and more – directly within the WordPress interface. Enjoy The7’s signature design without the need for additional plugins or a steep learning curve.</p>            
+                    <div class="boder_0 p_1" style="background-color: rgb(73, 73, 222);color: #ffffff;padding:1vw;height: auto;font-weight:bold;font-size: 2dvh;width: 40%;">The7 + Block Builder Demo</div>
+                </div>
+            </div>
+            <div> <div class="nav-right" style="align-items: start;padding: 2%;" id="nav_0_1"><div style="width: 100%;"><img src="https://the7.io/wp-content/uploads/2024/12/FEATURES-55.jpg" alt="" style="width: 100%;"></div>
+            <div style="width: 60%;">
+                <div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" fill="blue" viewBox="0 0 256 256"><path d="M229.06,108.79l-48.7,42,14.88,62.79a8.4,8.4,0,0,1-12.52,9.17L128,189.09,73.28,222.74a8.4,8.4,0,0,1-12.52-9.17l14.88-62.79-48.7-42A8.46,8.46,0,0,1,31.73,94L95.64,88.8l24.62-59.6a8.36,8.36,0,0,1,15.48,0l24.62,59.6L224.27,94A8.46,8.46,0,0,1,229.06,108.79Z" opacity="0.2"></path><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg></div>
+                <p class="p_1" style="font-weight: bold;">Zero Learning Curve</p>
+                <p class="p_1">If you’re comfortable with WordPress, you’ll feel right at home with The7. There’s zero learning curve, so you can start creating immediately.</p>
+                </div>
+                <div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" fill="blue" viewBox="0 0 256 256"><path d="M200,64V80H176a16,16,0,0,0-16,16v80H40a16,16,0,0,1-16-16V64A16,16,0,0,1,40,48H184A16,16,0,0,1,200,64Z" opacity="0.2"></path><path d="M224,72H208V64a24,24,0,0,0-24-24H40A24,24,0,0,0,16,64v96a24,24,0,0,0,24,24H152v8a24,24,0,0,0,24,24h48a24,24,0,0,0,24-24V96A24,24,0,0,0,224,72ZM40,168a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8v8H176a24,24,0,0,0-24,24v72Zm192,24a8,8,0,0,1-8,8H176a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Zm-96,16a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h40A8,8,0,0,1,136,208Zm80-96a8,8,0,0,1-8,8H192a8,8,0,0,1,0-16h16A8,8,0,0,1,216,112Z"></path></svg></div>
+                <p class="p_1" style="font-weight: bold;">Responsive The7 Block Editor</p>
+                <p class="p_1">We’ve extended the Block Editor to enable you to build <span class="p_2"> fully responsive </span>websites – all without adding extra bulk to your site.</p>
+                </div>
+                 <div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" fill="blue" viewBox="0 0 256 256"><path d="M204,168a28,28,0,0,0,12-2.69V208a8,8,0,0,1-8,8H64a8,8,0,0,1-8-8V165.31a28,28,0,1,1,0-50.62V72a8,8,0,0,1,8-8h46.69a28,28,0,1,1,50.61,0H208a8,8,0,0,1,8,8v42.69A28,28,0,1,0,204,168Z" opacity="0.2"></path><path d="M220.27,158.54a8,8,0,0,0-7.7-.46,20,20,0,1,1,0-36.16A8,8,0,0,0,224,114.69V72a16,16,0,0,0-16-16H171.78a35.36,35.36,0,0,0,.22-4,36.15,36.15,0,0,0-11.36-26.25,36,36,0,0,0-60.55,23.63,36.56,36.56,0,0,0,.14,6.62H64A16,16,0,0,0,48,72v32.22a35.36,35.36,0,0,0-4-.22,36.12,36.12,0,0,0-26.24,11.36,35.7,35.7,0,0,0-9.69,27,36.08,36.08,0,0,0,33.31,33.6,36.56,36.56,0,0,0,6.62-.14V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V165.31A8,8,0,0,0,220.27,158.54ZM208,208H64V165.31a8,8,0,0,0-11.43-7.23,20,20,0,1,1,0-36.16A8,8,0,0,0,64,114.69V72h46.69a8,8,0,0,0,7.23-11.43,20,20,0,1,1,36.16,0A8,8,0,0,0,161.31,72H208v32.23a35.68,35.68,0,0,0-6.62-.14A36,36,0,0,0,204,176a35.36,35.36,0,0,0,4-.22Z"></path></svg></div>
+                <p class="p_1" style="font-weight: bold;">Design Pattern Library</p>
+                <p class="p_1">The7 comes with a comprehensive collection of design patterns to make building your website even faster and easier.</p>
+                </div>
+                  <div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" fill="blue" viewBox="0 0 256 256"><path d="M232,152a103.93,103.93,0,0,1-5.9,34.63,8,8,0,0,1-7.57,5.37H37.46a8.05,8.05,0,0,1-7.57-5.41A104.06,104.06,0,0,1,24,151.19C24.44,94,71.73,47.49,129,48A104,104,0,0,1,232,152Z" opacity="0.2"></path><path d="M114.34,154.34l96-96a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32ZM128,88a63.9,63.9,0,0,1,20.44,3.33,8,8,0,1,0,5.11-15.16A80,80,0,0,0,48.49,160.88,8,8,0,0,0,56.43,168c.29,0,.59,0,.89-.05a8,8,0,0,0,7.07-8.83A64.92,64.92,0,0,1,64,152,64.07,64.07,0,0,1,128,88Zm99.74,13a8,8,0,0,0-14.24,7.3,96.27,96.27,0,0,1,5,75.71l-181.1-.07A96.24,96.24,0,0,1,128,56h.88a95,95,0,0,1,42.82,10.5A8,8,0,1,0,179,52.27,110.8,110.8,0,0,0,129,40h-1A112.05,112.05,0,0,0,22.35,189.25,16.07,16.07,0,0,0,37.46,200H218.53a16,16,0,0,0,15.11-10.71,112.35,112.35,0,0,0-5.9-88.3Z"></path></svg></div>
+                <p class="p_1" style="font-weight: bold;">Lightning-Fast Performance</p>
+                <p class="p_1">The7 adds no extra code to your website, ensuring it loads lightning fast even without optimization.</p>
+                </div>
+            </div>
+            
+        </div></div>
+        </div>
+         </div>
+    </section>
+    <section id="home_4" style="align-items: start;height: auto;">
+         <div  style="width: 100%;top: 0px;align-items: center;height: auto;justify-items: center;">
+            <div style="width: 100%;top: 0px;align-items: start;height: auto;">
+                   <div class="div_0" style="background-image: linear-gradient(rgba(187, 202, 246, 0.726),rgba(189, 195, 252, 0),rgba(251, 189, 252, 0));width: 100%;height: 100%;align-items: center;justify-items: center;top: 0px;" >
+                    <div><img src="https://the7.io/wp-content/uploads/2024/11/wp-bakery-logo.svg" style="width: 30vh;margin-top: 6%;" > </div>
+                     <div style="padding: 10%;align-items: center;justify-items: center;">
+                    <p class="p_0" style="text-align: center;">Native WordPress Full Site Editing with The7</p>
+                    <p class="p_1" style="text-align: center;">As of version 12, The7 supports WordPress’s native Full Site Editing (FSE). Edit your entire website – including headers, footers, archives, and more – directly within the WordPress interface. Enjoy The7’s signature design without the need for additional plugins or a steep learning curve.</p>            
+                    <div class="boder_0 p_1" style="background-color: rgb(73, 73, 222);color: #ffffff;padding:1vw;height: auto;font-weight:bold;font-size: 2dvh;width: 40%;">The7 + Block Builder Demo</div>
+                </div>
+            </div>
+            <div> <div class="nav-right" style="align-items: start;padding: 2%;" id="nav_0_1">
+            <div style="width: 60%;">
+                <div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="blue" viewBox="0 0 256 256"><path d="M40,96H88V208H32V104A8,8,0,0,1,40,96Zm176,40H168v72h56V144A8,8,0,0,0,216,136Z" opacity="0.2"></path><path d="M112.41,102.53a8,8,0,0,1,5.06-10.12l12-4A8,8,0,0,1,140,96v40a8,8,0,0,1-16,0V107.1l-1.47.49A8,8,0,0,1,112.41,102.53ZM248,208a8,8,0,0,1-8,8H16a8,8,0,0,1,0-16h8V104A16,16,0,0,1,40,88H80V56A16,16,0,0,1,96,40h64a16,16,0,0,1,16,16v72h40a16,16,0,0,1,16,16v56h8A8,8,0,0,1,248,208Zm-72-64v56h40V144ZM96,200h64V56H96Zm-56,0H80V104H40Z"></path></svg></div>
+                <p class="p_1" style="font-weight: bold;">#1 Best-Selling Theme for WPBakery</p>
+                <p class="p_1">The7 was released with native support for WPBakery Page Builder and Ultimate Addons, quickly becoming the number one choice for this builder.</p>
+                </div>
+                <div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="blue" viewBox="0 0 256 256"><path d="M216,56v56c0,96-88,120-88,120S40,208,40,112V56a8,8,0,0,1,8-8H208A8,8,0,0,1,216,56Z" opacity="0.2"></path><path d="M88,128a8,8,0,0,1,8-8h24V96a8,8,0,0,1,16,0v24h24a8,8,0,0,1,0,16H136v24a8,8,0,0,1-16,0V136H96A8,8,0,0,1,88,128ZM224,56v56c0,52.72-25.52,84.67-46.93,102.19-23.06,18.86-46,25.27-47,25.53a8,8,0,0,1-4.2,0c-1-.26-23.91-6.67-47-25.53C57.52,196.67,32,164.72,32,112V56A16,16,0,0,1,48,40H208A16,16,0,0,1,224,56Zm-16,0L48,56l0,56c0,37.3,13.82,67.51,41.07,89.81A128.25,128.25,0,0,0,128,223.62a129.3,129.3,0,0,0,39.41-22.2C194.34,179.16,208,149.07,208,112Z"></path></svg></div>
+                <p class="p_1" style="font-weight: bold;">Comes with Ultimate Addons</p>
+                <p class="p_1">Ultimate Addons is the most popular premium add-on for WPBakery Page Builder. It adds a vast number of shortcodes, settings, and features to the builder and comes standard with The7.</p>
+                </div>
+                 <div>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="blue" viewBox="0 0 256 256"><path d="M224,80l-96,56L32,80l96-56Z" opacity="0.2"></path><path d="M230.91,172A8,8,0,0,1,228,182.91l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,36,169.09l92,53.65,92-53.65A8,8,0,0,1,230.91,172ZM220,121.09l-92,53.65L36,121.09A8,8,0,0,0,28,134.91l96,56a8,8,0,0,0,8.06,0l96-56A8,8,0,1,0,220,121.09ZM24,80a8,8,0,0,1,4-6.91l96-56a8,8,0,0,1,8.06,0l96,56a8,8,0,0,1,0,13.82l-96,56a8,8,0,0,1-8.06,0l-96-56A8,8,0,0,1,24,80Zm23.88,0L128,126.74,208.12,80,128,33.26Z"></path></svg></div>
+                <p class="p_1" style="font-weight: bold;">50+ The7 Shortcodes</p>
+                <p class="p_1">The7 extends WPBakery even further with 7 post types, 50+ exclusive shortcodes, and many features that cannot be found in any other add-on.</p>
+                </div>
+                 
+            </div><div style="width: 100%;"><img src="https://the7.io/wp-content/uploads/2024/12/BAKERY2-004.jpg" alt="" style="width: 100%;"></div>
+            
+        </div></div>
+        </div>
+         </div>
+    </section>
+    <section id="home_5"></section>
+
+ 
+    <script>
+        window.addEventListener('scroll', function() {
+            const fixed_scrolled= document.querySelector('.fixed-nav');
+            const nav_scrolled= document.querySelectorAll('.nav-link');
+            const img_1= document.querySelectorAll('.img_1');
+            if (window.scrollY > 100) {
+                fixed_scrolled.classList.add('scrolled');
+                 nav_scrolled.forEach(link => link.classList.add('scrolled'));
+            } else {
+                fixed_scrolled.classList.remove('scrolled');
+                nav_scrolled.forEach(link => link.classList.remove('scrolled'));
+            }
+            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+        function chay_nhanh() {
+            console.log(section.offsetTop)
+        }
+
+    </script>
+</body>
+</html>
